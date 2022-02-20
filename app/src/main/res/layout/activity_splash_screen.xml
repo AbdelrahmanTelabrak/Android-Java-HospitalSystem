@@ -6,4 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".SplashScreenActivity">
 
+    <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/logo_splash_hospital_system"
+        app:layout_constraintBottom_toTopOf="@+id/logo_splash_hospital_system"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_gradient_upper_left"/>
+
+    <ImageView
+        android:id="@+id/logo_splash_hospital_system"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/logo_hospital_system"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_splash_hospital_system"
+        app:layout_constraintStart_toStartOf="@+id/logo_splash_hospital_system"
+        android:background="@drawable/shape_gradient_bottom_right"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
