@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalSystemAbdelrahmanTarek">
-        <activity android:name=".Receptionist.ReceptionistActivity"></activity>
+        <activity android:name=".Manager.ManagerActivity"></activity>
+        <activity android:name=".Nurse.NurseActivity" />
+        <activity android:name=".Doctor.DoctorActivity" />
+        <activity android:name=".AnalysisEmp.AnalysisEmpActivity" />
+        <activity android:name=".Receptionist.ReceptionistActivity" />
         <activity android:name=".HrEmployee.HrEmployeeActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".StartUp.StartUpActivity" />
