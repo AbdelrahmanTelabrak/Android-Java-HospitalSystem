@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Receptionist.ReceptionistMenuFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_receptionist_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_pp_receptionist"
+                        android:layout_width="@dimen/_37sdp"
+                        android:layout_height="@dimen/_37sdp"
+                        android:background="@drawable/iv_profile_photo_2"
+                        app:layout_constraintBottom_toBottomOf="@+id/linearLayout_receptionist_menu"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout_receptionist_menu"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout_receptionist_menu" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout_receptionist_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/iv_pp_receptionist"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins"
+                            android:text="Ebrahem Elzainy"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins"
+                            android:text="Specialist , Receptionist"
+                            android:textColor="@color/main_green"
+                            android:textSize="@dimen/_10ssp" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/ic_notification"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cv_receptionist_menu" />
+
+            <ImageButton
+                android:id="@+id/ib_container_dark_blue"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_192sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/shape_container_dark_blue"
+                app:layout_constraintEnd_toStartOf="@+id/ib_container_green"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_receptionist_menu" />
+
+            <ImageView
+                android:id="@+id/iv_calls_ic"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_65sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/ic_employees_list"
+                app:layout_constraintTop_toTopOf="@+id/ib_container_dark_blue"
+                app:layout_constraintBottom_toBottomOf="@id/ib_container_dark_blue"
+                app:layout_constraintStart_toStartOf="@id/ib_container_dark_blue"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_dark_blue"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/iv_calls_ic"
+                app:layout_constraintStart_toStartOf="@id/ib_container_dark_blue"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_dark_blue"
+                android:text="Calls"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white"/>
+
+
+            <ImageButton
+                android:id="@+id/ib_container_green"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_155sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/shape_container_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ib_container_dark_blue"
+                app:layout_constraintTop_toTopOf="@+id/ib_container_dark_blue" />
+
+            <ImageView
+                android:id="@+id/iv_tasks_ic"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_65sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/ic_tasks"
+                app:layout_constraintTop_toTopOf="@+id/ib_container_green"
+                app:layout_constraintBottom_toBottomOf="@id/ib_container_green"
+                app:layout_constraintStart_toStartOf="@id/ib_container_green"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_green"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/iv_tasks_ic"
+                app:layout_constraintStart_toStartOf="@id/ib_container_green"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_green"
+                android:text="Tasks"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white"/>
+
+
+            <ImageButton
+                android:id="@+id/ib_container_purple"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_155sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/shape_container_purple"
+                app:layout_constraintTop_toBottomOf="@+id/ib_container_dark_blue"
+                app:layout_constraintStart_toStartOf="@+id/ib_container_dark_blue"
+                app:layout_constraintEnd_toEndOf="@+id/ib_container_dark_blue"/>
+
+            <ImageView
+                android:id="@+id/iv_reports_ic"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_65sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/ic_reports"
+                app:layout_constraintTop_toTopOf="@+id/ib_container_purple"
+                app:layout_constraintBottom_toBottomOf="@id/ib_container_purple"
+                app:layout_constraintStart_toStartOf="@id/ib_container_purple"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_purple"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/iv_reports_ic"
+                app:layout_constraintStart_toStartOf="@id/ib_container_purple"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_purple"
+                android:text="Reports"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white"/>
+
+            <ImageButton
+                android:id="@+id/ib_container_blue"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/shape_container_blue"
+                app:layout_constraintTop_toBottomOf="@+id/ib_container_green"
+                app:layout_constraintBottom_toBottomOf="@+id/ib_container_purple"
+                app:layout_constraintStart_toStartOf="@id/ib_container_green"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_green"/>
+
+            <ImageView
+                android:id="@+id/iv_attendance_ic"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_65sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/ic_attendance"
+                app:layout_constraintTop_toTopOf="@+id/ib_container_blue"
+                app:layout_constraintBottom_toBottomOf="@id/ib_container_blue"
+                app:layout_constraintStart_toStartOf="@id/ib_container_blue"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_blue"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/iv_attendance_ic"
+                app:layout_constraintStart_toStartOf="@id/ib_container_blue"
+                app:layout_constraintEnd_toEndOf="@id/ib_container_blue"
+                android:text="Attendance - Leaving"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+</layout>

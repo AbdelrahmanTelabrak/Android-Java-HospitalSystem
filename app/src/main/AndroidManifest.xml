@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalSystemAbdelrahmanTarek">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Receptionist.ReceptionistActivity"></activity>
+        <activity android:name=".HrEmployee.HrEmployeeActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".StartUp.StartUpActivity" />
-        <activity android:name=".SplashScreenActivity"
+        <activity
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
