@@ -1,21 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".StartUp.PrototypeMapFragment">
+        android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <LinearLayout
+            android:id="@+id/linearLayout_top_prototype"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout_middle_prototype"
+            app:layout_constraintTop_toTopOf="parent">
+        </LinearLayout>
 
-    </FrameLayout>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/_100sdp"
+            android:background="@drawable/shape_gradient_upper_left"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout_top_prototype"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout_middle_prototype"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout_bottom_prototype"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_top_prototype">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Prototype Map"
+            android:textColor="@color/main_green"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/linearLayout_middle_prototype" />
+
+        <Button
+            android:id="@+id/bt_prototype_doctor"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="Doctor"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/bt_prototype_receptionist"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bt_prototype_receptionist" />
+
+        <Button
+            android:id="@+id/bt_prototype_receptionist"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Receptionist"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/bt_prototype_nurse"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bt_prototype_doctor"
+            app:layout_constraintTop_toBottomOf="@id/textView" />
+
+        <Button
+            android:id="@+id/bt_prototype_nurse"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="Nurse"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bt_prototype_receptionist"
+            app:layout_constraintTop_toTopOf="@id/bt_prototype_receptionist" />
+
+        <Button
+            android:id="@+id/bt_prototype_analysis"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_5sdp"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintHorizontal_weight="3"
+            android:text="Analysis Employee"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/bt_prototype_manager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_prototype_doctor" />
+
+        <Button
+            android:id="@+id/bt_prototype_manager"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintHorizontal_weight="2"
+            android:text="Manager"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/bt_prototype_HR"
+            app:layout_constraintStart_toEndOf="@+id/bt_prototype_analysis"
+            app:layout_constraintTop_toBottomOf="@+id/bt_prototype_receptionist" />
+
+        <Button
+            android:id="@+id/bt_prototype_HR"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintHorizontal_weight="1"
+            android:text="HR"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_prototype_manager"
+            app:layout_constraintTop_toBottomOf="@+id/bt_prototype_nurse" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout_bottom_prototype"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_middle_prototype">
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_100sdp"
+            android:background="@drawable/shape_gradient_bottom_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout_bottom_prototype" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
