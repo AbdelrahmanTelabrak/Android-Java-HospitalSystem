@@ -94,7 +94,7 @@
                 app:boxCornerRadiusBottomStart="@dimen/_10sdp"
                 app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
                 app:startIconDrawable="@drawable/ic_phone"
-                app:startIconTint="null">
+                app:startIconTint="@color/main_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -117,10 +117,10 @@
                 app:boxCornerRadiusBottomStart="@dimen/_10sdp"
                 app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
                 app:startIconDrawable="@drawable/ic_lock"
-                app:startIconTint="null"
+                app:startIconTint="@color/main_green"
                 app:endIconDrawable="@drawable/ic_eye"
                 app:endIconMode="password_toggle"
-                app:endIconTint="null">
+                app:endIconTint="@color/main_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -136,6 +136,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@+id/etl_login_password"
                 app:layout_constraintEnd_toEndOf="@+id/etl_login_password"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_linearLayout"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"/>
 
@@ -143,6 +144,7 @@
                 android:id="@+id/bottom_linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/middle_linearLayout">
@@ -150,17 +152,17 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_margin="@dimen/_15sdp"
                 android:background="@drawable/shape_button"
                 android:fontFamily="@font/poppins_light"
                 android:padding="@dimen/_5sdp"
                 android:text="Login"
                 android:textAllCaps="false"
-                app:layout_constraintTop_toTopOf="@id/bottom_linearLayout" />
+                app:layout_constraintTop_toTopOf="@id/bottom_linearLayout"
+                tools:layout_editor_absoluteX="19dp" />
 
             <ImageView
                 android:layout_width="0dp"

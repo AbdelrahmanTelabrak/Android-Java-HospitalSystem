@@ -14,9 +14,9 @@
         <activity android:name=".Doctor.DoctorActivity" />
         <activity android:name=".AnalysisEmp.AnalysisEmpActivity" />
         <activity android:name=".Receptionist.ReceptionistActivity" />
-        <activity android:name=".HrEmployee.HrEmployeeActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".StartUp.StartUpActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".HrEmployee.HrEmployeeActivity" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/item_employee_pp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/iv_pp_analysis"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/item_employee_status"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:background="@drawable/ic_employee_status_available"
+                app:layout_constraintBottom_toBottomOf="@id/item_employee_pp"
+                app:layout_constraintEnd_toEndOf="@id/item_employee_pp"
+                app:layout_constraintStart_toEndOf="@+id/item_employee_pp" />
+
+            <TextView
+                android:id="@+id/tv_employee_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Name"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/tv_employee_specialist"
+                app:layout_constraintStart_toEndOf="@+id/item_employee_pp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_employee_specialist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Specialist"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_employee_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_employee_name" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

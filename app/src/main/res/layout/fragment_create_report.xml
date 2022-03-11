@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CreateReportFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_create_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/poppins"
+                android:text="Create Report"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:background="@drawable/ic_left_arrow"
+                android:layout_marginStart="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_create_report"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_create_report" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_report_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_create_report"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Report Name"
+                    android:fontFamily="@font/poppins"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_report_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/etl_report_name"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"
+                    android:hint="Description"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="top"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/iv_download_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/iv_download"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etl_report_description" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Upload Image"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintTop_toBottomOf="@id/iv_download_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="@color/main_green"
+                app:cornerRadius="@dimen/_7sdp"
+                app:icon="@drawable/ic_add" />
+
+            <Button
+                android:id="@+id/btn_create_report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/shape_button"
+                android:fontFamily="@font/poppins_light"
+                android:padding="@dimen/_5sdp"
+                android:text="Create Report"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="19dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

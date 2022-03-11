@@ -1,9 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HrEmployee.HrEmployeeActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HrEmployee.HrEmployeeActivity">
+
+        <TextView
+            android:id="@+id/tv_employee_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Employee"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"
+            android:textSize="@dimen/_15ssp"/>
+
+        <ImageButton
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_14sdp"
+            android:background="@drawable/ic_left_arrow"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_employee_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_employee_list" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etl_search_employee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_employee_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="@dimen/_7sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+            app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search for Employee"
+                android:textSize="@dimen/_12ssp"
+                android:fontFamily="@font/poppins"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_empList_hr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:fillViewport="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etl_search_employee">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="All"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Doctor"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Nurse"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="HR"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Manager"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Receptionist"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Analysis Emp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/hsv_empList_hr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_employee_card"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

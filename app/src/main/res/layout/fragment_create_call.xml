@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Receptionist.CreateCallFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_create_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/poppins"
+                android:text="Create Call"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:background="@drawable/ic_left_arrow"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_create_call"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_create_call" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_patient_name_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_create_call"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Patient Name"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="@dimen/_13ssp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_age_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/etl_patient_name_call"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="@dimen/_13ssp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_phone_number_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/etl_age_call"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="@dimen/_13ssp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_doctor_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/etl_phone_number_call"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
+                app:endIconDrawable="@drawable/ic_right_arrow">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Select Doctor"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="@dimen/_13ssp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_description_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/etl_doctor_call"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_160sdp"
+                    android:hint="Case Description"
+                    android:gravity="top"
+                    android:textAlignment="gravity"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="@dimen/_13ssp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Call"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="@dimen/_15sdp"
+                android:padding="@dimen/_8sdp"
+                android:background="@drawable/shape_button"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>
