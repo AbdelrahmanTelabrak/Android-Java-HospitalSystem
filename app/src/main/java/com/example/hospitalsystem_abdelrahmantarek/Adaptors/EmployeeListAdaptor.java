@@ -1,4 +1,4 @@
-package com.example.hospitalsystem_abdelrahmantarek;
+package com.example.hospitalsystem_abdelrahmantarek.Adaptors;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
+import com.example.hospitalsystem_abdelrahmantarek.R;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.ItemEmployeeCardBinding;
 import com.squareup.picasso.Picasso;
 

@@ -10,19 +10,19 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Reports.ReportsListsFragment">
+        tools:context=".Tasks.TasksListFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_create_reports"
+                android:id="@+id/tv_create_tasks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/poppins"
-                android:text="Reports"
+                android:text="Tasks"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16ssp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -34,30 +34,21 @@
                 android:layout_height="@dimen/_14sdp"
                 android:background="@drawable/ic_left_arrow"
                 android:layout_marginStart="@dimen/_15sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_create_reports"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_create_tasks"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_create_reports" />
+                app:layout_constraintTop_toTopOf="@+id/tv_create_tasks" />
 
-            <ImageButton
-                android:id="@+id/ib_add_report"
-                android:layout_width="@dimen/_44sdp"
-                android:layout_height="@dimen/_44sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:background="@drawable/ic_add_container"
-                app:layout_constraintTop_toBottomOf="@id/tv_create_reports"
-                app:layout_constraintEnd_toEndOf="parent"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etl_add_report"
+                android:id="@+id/etl_taskDate_tasksList"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_create_reports"
-                app:layout_constraintEnd_toStartOf="@id/ib_add_report"
+                app:layout_constraintTop_toBottomOf="@id/tv_create_tasks"
+                app:layout_constraintEnd_toEndOf="parent"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxCornerRadiusTopStart="@dimen/_7sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_7sdp"
@@ -65,6 +56,7 @@
                 app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ete_taskDate_tasksList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
@@ -74,15 +66,15 @@
                 android:layout_width="@dimen/_44sdp"
                 android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/ic_calender_container_black"
-                app:layout_constraintTop_toTopOf="@id/ib_add_report"
-                app:layout_constraintBottom_toBottomOf="@id/etl_add_report"
-                app:layout_constraintEnd_toEndOf="@id/etl_add_report"/>
+                app:layout_constraintTop_toTopOf="@id/etl_taskDate_tasksList"
+                app:layout_constraintBottom_toBottomOf="@id/etl_taskDate_tasksList"
+                app:layout_constraintEnd_toEndOf="@id/etl_taskDate_tasksList"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:paddingTop="@dimen/_15sdp"
-                app:layout_constraintTop_toBottomOf="@id/etl_add_report"
+                app:layout_constraintTop_toBottomOf="@id/etl_taskDate_tasksList"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:listitem="@layout/item_report"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

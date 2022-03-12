@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/itemDoc_pp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/iv_pp_analysis"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/itemDoc_status"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:background="@drawable/ic_employee_status_available"
+                app:layout_constraintBottom_toBottomOf="@id/itemDoc_pp"
+                app:layout_constraintEnd_toEndOf="@id/itemDoc_pp"
+                app:layout_constraintStart_toEndOf="@+id/itemDoc_pp" />
+
+            <TextView
+                android:id="@+id/itemDoc_tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Name"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/itemDoc_tvSpecialist"
+                app:layout_constraintStart_toEndOf="@+id/itemDoc_pp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/itemDoc_tvSpecialist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Specialist"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/itemDoc_tvName"
+                app:layout_constraintTop_toBottomOf="@+id/itemDoc_tvName" />
+
+            <RadioButton
+                android:id="@+id/itemDoc_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

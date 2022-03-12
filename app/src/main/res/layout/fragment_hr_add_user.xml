@@ -39,6 +39,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
+                android:id="@+id/ibBackBtn_addUser"
                 android:layout_width="@dimen/_16sdp"
                 android:layout_height="@dimen/_14sdp"
                 android:background="@drawable/ic_left_arrow"

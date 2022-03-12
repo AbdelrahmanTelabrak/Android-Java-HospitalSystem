@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.hospitalsystem_abdelrahmantarek.R;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentLoginBinding;
@@ -17,6 +19,7 @@ import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentLoginBind
 public class LoginFragment extends Fragment {
 
     FragmentLoginBinding binding;
+    NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,6 +33,14 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
+
+        binding.btnLoginLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_loginFragment_to_prototypeMapFragment);
+            }
+        });
 
     }
 }

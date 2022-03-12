@@ -71,6 +71,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
+                android:id="@+id/ibDateBtn_calls"
                 android:layout_width="@dimen/_44sdp"
                 android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/ic_calender_container_black"
@@ -79,6 +80,7 @@
                 app:layout_constraintEnd_toEndOf="@id/etl_add_date_calls_receptionist"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_callsList_calls"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:paddingTop="@dimen/_15sdp"

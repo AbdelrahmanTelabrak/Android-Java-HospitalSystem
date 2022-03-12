@@ -5,7 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 
-import com.example.hospitalsystem_abdelrahmantarek.EmployeeModel;
+import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.R;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.ActivityHrEmployeeBinding;
 

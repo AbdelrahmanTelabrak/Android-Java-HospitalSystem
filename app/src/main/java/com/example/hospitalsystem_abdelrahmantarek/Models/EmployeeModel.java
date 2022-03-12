@@ -1,4 +1,4 @@
-package com.example.hospitalsystem_abdelrahmantarek;
+package com.example.hospitalsystem_abdelrahmantarek.Models;
 
 public class EmployeeModel {
 

@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,8 @@ public class PrototypeMapFragment extends Fragment {
 
     FragmentPrototypeMapBinding binding;
 
+    NavController navController;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,5 +33,49 @@ public class PrototypeMapFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+
+        binding.btnDoctorPrototype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_prototypeMapFragment_to_doctorMenuFragment);
+            }
+        });
+
+        binding.btnReceptionistPrototype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_prototypeMapFragment_to_receptionistMenuFragment);
+            }
+        });
+
+        binding.btnNursePrototype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_prototypeMapFragment_to_nurseMenuFragment);
+            }
+        });
+
+        binding.btnAnalysisPrototype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_prototypeMapFragment_to_analysisEmpMenuFragment);
+            }
+        });
+
+        binding.btnManagerPrototype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_prototypeMapFragment_to_managerMenuFragment);
+            }
+        });
+
+        binding.btnHrPrototype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate((R.id.action_prototypeMapFragment_to_mainMenuHrFragment));
+            }
+        });
+
     }
 }

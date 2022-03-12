@@ -53,50 +53,50 @@
             app:layout_constraintTop_toTopOf="@id/linearLayout_middle_prototype" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_prototype_doctor"
+            android:id="@+id/btnDoctor_prototype"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/grey"
             app:cornerRadius="@dimen/_5sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             android:padding="@dimen/_10sdp"
             android:text="Doctor"
             android:fontFamily="@font/poppins_light"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toStartOf="@+id/bt_prototype_receptionist"
+            app:layout_constraintEnd_toStartOf="@+id/btnReceptionist_prototype"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/bt_prototype_receptionist" />
+            app:layout_constraintTop_toTopOf="@id/btnReceptionist_prototype" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_prototype_receptionist"
+            android:id="@+id/btnReceptionist_prototype"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/grey"
             app:cornerRadius="@dimen/_5sdp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
             android:padding="@dimen/_10sdp"
             android:text="Receptionist"
             android:fontFamily="@font/poppins_light"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toStartOf="@+id/bt_prototype_nurse"
+            app:layout_constraintEnd_toStartOf="@+id/btnNurse_prototype"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/bt_prototype_doctor"
+            app:layout_constraintStart_toEndOf="@+id/btnDoctor_prototype"
             app:layout_constraintTop_toBottomOf="@id/textView" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_prototype_nurse"
+            android:id="@+id/btnNurse_prototype"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/grey"
             app:cornerRadius="@dimen/_5sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_5sdp"
             android:padding="@dimen/_10sdp"
             android:text="Nurse"
@@ -104,18 +104,18 @@
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/bt_prototype_receptionist"
-            app:layout_constraintTop_toTopOf="@id/bt_prototype_receptionist" />
+            app:layout_constraintStart_toEndOf="@+id/btnReceptionist_prototype"
+            app:layout_constraintTop_toTopOf="@id/btnReceptionist_prototype" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_prototype_analysis"
+            android:id="@+id/btnAnalysis_prototype"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/grey"
             app:cornerRadius="@dimen/_5sdp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
             android:paddingTop="@dimen/_10sdp"
@@ -125,38 +125,38 @@
             android:text="Analysis Employee"
             android:fontFamily="@font/poppins_light"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toStartOf="@+id/bt_prototype_manager"
+            app:layout_constraintEnd_toStartOf="@+id/btnManager_prototype"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_prototype_doctor" />
+            app:layout_constraintTop_toBottomOf="@+id/btnDoctor_prototype" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_prototype_manager"
+            android:id="@+id/btnManager_prototype"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/grey"
             app:cornerRadius="@dimen/_5sdp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
             android:padding="@dimen/_10sdp"
             app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintHorizontal_weight="2"
             android:text="Manager"
             android:fontFamily="@font/poppins_light"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toStartOf="@+id/bt_prototype_HR"
-            app:layout_constraintStart_toEndOf="@+id/bt_prototype_analysis"
-            app:layout_constraintTop_toBottomOf="@+id/bt_prototype_receptionist" />
+            app:layout_constraintEnd_toStartOf="@+id/btnHr_prototype"
+            app:layout_constraintStart_toEndOf="@+id/btnAnalysis_prototype"
+            app:layout_constraintTop_toBottomOf="@+id/btnReceptionist_prototype" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_prototype_HR"
+            android:id="@+id/btnHr_prototype"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/grey"
             app:cornerRadius="@dimen/_5sdp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_3sdp"
             android:padding="@dimen/_10sdp"
             app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintHorizontal_weight="1"
@@ -164,8 +164,8 @@
             android:fontFamily="@font/poppins_light"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bt_prototype_manager"
-            app:layout_constraintTop_toBottomOf="@+id/bt_prototype_nurse" />
+            app:layout_constraintStart_toEndOf="@+id/btnManager_prototype"
+            app:layout_constraintTop_toBottomOf="@+id/btnNurse_prototype" />
 
         <LinearLayout
             android:id="@+id/linearLayout_bottom_prototype"

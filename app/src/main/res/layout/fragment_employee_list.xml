@@ -165,6 +165,16 @@
                 tools:listitem="@layout/item_employee_card"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnAddEmp_empList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_add"
+                app:tint="@color/white"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

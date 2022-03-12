@@ -1,4 +1,4 @@
-package com.example.hospitalsystem_abdelrahmantarek;
+package com.example.hospitalsystem_abdelrahmantarek.Tasks;
 
 import android.os.Bundle;
 
@@ -11,23 +11,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentReportsListsBinding;
+import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentTasksListBinding;
 
 
-public class ReportsListsFragment extends Fragment {
+public class TasksListFragment extends Fragment {
 
-    FragmentReportsListsBinding binding;
+    FragmentTasksListBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_reports_lists, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tasks_list, container, false);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 }

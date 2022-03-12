@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Receptionist.CaseDProgressFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCDP_caseD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/poppins"
+                android:text="Case Details"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:background="@drawable/ic_left_arrow"
+                android:layout_marginStart="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCDP_caseD"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvCDP_caseD" />
+
+            <TextView
+                android:id="@+id/tvCDP_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Patient Name"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCDP_caseD" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:text="Ebrahem Khaled"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvCDP_name"
+                app:layout_constraintBottom_toBottomOf="@id/tvCDP_name"/>
+
+            <TextView
+                android:id="@+id/tvCDP_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Age"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCDP_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:text="24 Years"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvCDP_age"
+                app:layout_constraintBottom_toBottomOf="@id/tvCDP_age"/>
+
+            <TextView
+                android:id="@+id/tvCDP_phoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Phone Number"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCDP_age" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:text="254110241423"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvCDP_phoneNumber"
+                app:layout_constraintBottom_toBottomOf="@id/tvCDP_phoneNumber"/>
+
+            <TextView
+                android:id="@+id/tvCDP_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Date"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCDP_phoneNumber" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:text="24 . 04 . 2021"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvCDP_date"
+                app:layout_constraintBottom_toBottomOf="@id/tvCDP_date"/>
+
+            <TextView
+                android:id="@+id/tvCDP_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Status"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCDP_date" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:text="Process   "
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                android:drawableEnd="@drawable/ic_busy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvCDP_status"
+                app:layout_constraintBottom_toBottomOf="@id/tvCDP_status"/>
+
+            <TextView
+                android:id="@+id/tvCDP_descriptionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Case Description"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCDP_status" />
+
+            <TextView
+                android:id="@+id/tvCDP_caseDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Details note : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCDP_descriptionTitle"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/shape_button"
+                app:backgroundTint="@color/red"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_light"
+                app:icon="@drawable/ic_logout"
+                app:iconGravity="textEnd"
+                style="@style/Widget.MaterialComponents.Button.Icon"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

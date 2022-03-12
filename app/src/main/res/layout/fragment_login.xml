@@ -151,18 +151,6 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_15sdp"
-                android:background="@drawable/shape_button"
-                android:fontFamily="@font/poppins_light"
-                android:padding="@dimen/_5sdp"
-                android:text="Login"
-                android:textAllCaps="false"
-                app:layout_constraintTop_toTopOf="@id/bottom_linearLayout"
-                tools:layout_editor_absoluteX="19dp" />
 
             <ImageView
                 android:layout_width="0dp"
@@ -173,6 +161,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/bottom_linearLayout" />
+
+            <Button
+                android:id="@+id/btnLogin_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/shape_button"
+                android:fontFamily="@font/poppins_light"
+                android:padding="@dimen/_5sdp"
+                android:text="Login"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toTopOf="@id/bottom_linearLayout"
+                tools:layout_editor_absoluteX="19dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package com.example.hospitalsystem_abdelrahmantarek;
+package com.example.hospitalsystem_abdelrahmantarek.Reports;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hospitalsystem_abdelrahmantarek.R;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentCreateReportBinding;
 
 

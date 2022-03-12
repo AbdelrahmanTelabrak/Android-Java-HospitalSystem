@@ -33,20 +33,32 @@
             app:layout_constraintStart_toEndOf="@id/item_iv_reports_container"
             app:layout_constraintTop_toTopOf="@id/item_iv_reports_container"
             app:layout_constraintBottom_toBottomOf="@id/item_iv_reports_container"
-            android:text="Ebrahim Khaled"
+            android:text="Report Name"
             android:fontFamily="@font/poppins"
             android:textColor="@color/black"
             android:layout_marginStart="@dimen/_10sdp"/>
 
         <ImageView
             android:id="@+id/item_reports_iv_status"
-            android:layout_width="@dimen/_20sdp"
+            android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_20sdp"
-            android:background="@drawable/ic_completed"
-            app:layout_constraintTop_toTopOf="@id/item_iv_reports_container"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/iv_finished_h_container"
             app:layout_constraintBottom_toBottomOf="@id/item_iv_reports_container"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="@dimen/_15sdp"/>
+            app:layout_constraintTop_toTopOf="@id/item_iv_reports_container" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/poppins"
+            android:text="Finished"
+            android:textColor="@color/light_green"
+            app:layout_constraintBottom_toBottomOf="@+id/item_reports_iv_status"
+            app:layout_constraintEnd_toEndOf="@+id/item_reports_iv_status"
+            app:layout_constraintStart_toStartOf="@+id/item_reports_iv_status"
+            app:layout_constraintTop_toTopOf="@+id/item_reports_iv_status" />
 
         <ImageView
             android:id="@+id/item_iv_calender_reports"
