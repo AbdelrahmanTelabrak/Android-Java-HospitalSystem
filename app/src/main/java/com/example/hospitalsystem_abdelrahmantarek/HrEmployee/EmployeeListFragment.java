@@ -32,7 +32,7 @@ public class EmployeeListFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { 
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
@@ -41,6 +41,13 @@ public class EmployeeListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.action_employeeListFragment_to_hrAddUserFragment);
+            }
+        });
+
+        binding.hrEmpListBtnAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.hrEmpListBtnAll.setChecked(true);
             }
         });
     }
