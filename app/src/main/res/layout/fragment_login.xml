@@ -80,7 +80,7 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etl_login_phone_number"
+                android:id="@+id/etl_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"
@@ -93,13 +93,15 @@
                 app:boxCornerRadiusTopEnd="@dimen/_10sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_10sdp"
                 app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-                app:startIconDrawable="@drawable/ic_phone"
-                app:startIconTint="@color/main_green">
+                app:startIconDrawable="@drawable/ic_email"
+                app:startIconTint="@color/main_green"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Phone Number"/>
+                    android:hint="Email"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,7 +112,7 @@
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/middle_linearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/etl_login_phone_number"
+                app:layout_constraintTop_toBottomOf="@+id/etl_login_email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxCornerRadiusTopStart="@dimen/_10sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_10sdp"
@@ -120,9 +122,12 @@
                 app:startIconTint="@color/main_green"
                 app:endIconDrawable="@drawable/ic_eye"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/main_green">
+                app:endIconTint="@color/main_green"
+                app:errorEnabled="true"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"/>

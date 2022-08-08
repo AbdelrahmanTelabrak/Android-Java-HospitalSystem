@@ -1,5 +1,7 @@
 package com.example.hospitalsystem_abdelrahmantarek.Receptionist;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,13 +35,21 @@ public class ReceptionistMenuFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
         navController = Navigation.findNavController(view);
 
         binding.ibContainerDarkBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.action_receptionistMenuFragment_to_callsFragment);
+            }
+        });
+
+        binding.ibRMLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferences.edit().putString("employee", "null").apply();
+                navController.navigate(R.id.action_receptionistMenuFragment_to_loginFragment);
             }
         });
     }

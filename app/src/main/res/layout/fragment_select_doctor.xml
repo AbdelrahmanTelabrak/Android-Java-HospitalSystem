@@ -43,8 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_selectDoctor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +57,8 @@
                 app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_sDoc_search"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Search for Doctor"
@@ -66,15 +68,16 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_doctors_list"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintBottom_toTopOf="@+id/btn_select_select_doctor"
                 app:layout_constraintTop_toBottomOf="@+id/etlSDoc_search"
                 tools:listitem="@layout/item_doctor_card" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_select_select_doctor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Select Doctor"

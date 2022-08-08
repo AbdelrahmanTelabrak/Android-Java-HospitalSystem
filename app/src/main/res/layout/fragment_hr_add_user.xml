@@ -87,6 +87,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_first_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="First Name"
@@ -113,6 +114,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_last_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Last Name"
@@ -139,6 +141,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_gender"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Gender"
@@ -165,6 +168,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_specialist"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Specialist"
@@ -191,6 +195,8 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_birthday"
+                            android:editable="false"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Date of Birth"
@@ -217,6 +223,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_status"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Status"
@@ -243,6 +250,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_mobile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Phone Number"
@@ -269,6 +277,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Email"
@@ -295,6 +304,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Address"
@@ -321,6 +331,7 @@
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_hr_NU_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Password"
@@ -329,6 +340,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
+                        android:id="@+id/btn_hr_NU_create"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Create User"

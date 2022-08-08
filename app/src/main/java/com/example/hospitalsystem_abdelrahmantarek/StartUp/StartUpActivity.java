@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import com.example.hospitalsystem_abdelrahmantarek.R;
 
+//http://api.instant-ss.com/api/v1      base url
+
 public class StartUpActivity extends AppCompatActivity {
 
     @Override

@@ -31,6 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
+                android:id="@+id/btn_dcl_back"
                 android:layout_width="@dimen/_16sdp"
                 android:layout_height="@dimen/_14sdp"
                 android:background="@drawable/ic_left_arrow"
@@ -40,10 +41,12 @@
                 app:layout_constraintTop_toTopOf="@+id/docCasesL_tvCases" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_dcl_cases"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/docCasesL_tvCases"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_case_card"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

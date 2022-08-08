@@ -34,7 +34,7 @@ public class PrototypeMapFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-
+/*
         binding.btnDoctorPrototype.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +75,7 @@ public class PrototypeMapFragment extends Fragment {
             public void onClick(View v) {
                 navController.navigate((R.id.action_prototypeMapFragment_to_mainMenuHrFragment));
             }
-        });
+        });*/
 
     }
 }

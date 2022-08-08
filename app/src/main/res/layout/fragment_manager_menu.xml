@@ -33,7 +33,7 @@
                         android:id="@+id/iv_pp_manager"
                         android:layout_width="@dimen/_37sdp"
                         android:layout_height="@dimen/_37sdp"
-                        android:background="@drawable/iv_pp_manager"
+                        android:src="@drawable/iv_dpp_manager"
                         app:layout_constraintBottom_toBottomOf="@+id/linearLayout_manager_menu"
                         app:layout_constraintEnd_toStartOf="@+id/linearLayout_manager_menu"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -52,6 +52,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/tv_MM_fullName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -75,7 +76,19 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <ImageButton
+                android:id="@+id/ib_MM_logout"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:src="@drawable/ic_logout"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                app:layout_constraintEnd_toStartOf="@+id/imageView9"
+                app:layout_constraintTop_toTopOf="@+id/imageView9"
+                android:layout_marginEnd="@dimen/_5sdp"/>
+
             <ImageView
+                android:id="@+id/imageView9"
                 android:layout_width="@dimen/_22sdp"
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_15sdp"

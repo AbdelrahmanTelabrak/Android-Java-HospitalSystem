@@ -57,6 +57,7 @@
                 app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_DSN_search"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Search for Nurse"
@@ -66,6 +67,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_DSN_nurses"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

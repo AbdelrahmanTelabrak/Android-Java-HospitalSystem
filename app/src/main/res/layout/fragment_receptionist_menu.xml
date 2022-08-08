@@ -75,7 +75,19 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <ImageButton
+                android:id="@+id/ib_RM_logout"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:background="@color/white"
+                android:src="@drawable/ic_logout"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                app:layout_constraintEnd_toStartOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="@+id/imageView8"
+                android:layout_marginEnd="@dimen/_5sdp"/>
+
             <ImageView
+                android:id="@+id/imageView8"
                 android:layout_width="@dimen/_22sdp"
                 android:layout_height="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_15sdp"

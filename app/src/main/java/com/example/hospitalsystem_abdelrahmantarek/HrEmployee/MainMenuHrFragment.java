@@ -1,5 +1,7 @@
 package com.example.hospitalsystem_abdelrahmantarek.HrEmployee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -34,14 +36,21 @@ public class MainMenuHrFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
+        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
         navController = Navigation.findNavController(view);
 
         binding.ibContainerOrange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.action_mainMenuHrFragment_to_employeeListFragment);
+            }
+        });
+
+        binding.ibHMLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferences.edit().putString("employee", "null").apply();
+                navController.navigate(R.id.action_mainMenuHrFragment_to_loginFragment);
             }
         });
     }

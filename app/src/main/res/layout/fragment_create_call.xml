@@ -55,6 +55,7 @@
                 app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_cC_patient_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Patient Name"
@@ -80,6 +81,7 @@
                 app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_cC_age"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Age"
@@ -105,6 +107,7 @@
                 app:boxCornerRadiusBottomEnd="@dimen/_10sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_cC_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone Number"
@@ -128,9 +131,13 @@
                 app:boxCornerRadiusTopEnd="@dimen/_7sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_7sdp"
                 app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
-                app:endIconDrawable="@drawable/ic_right_arrow">
+                app:endIconDrawable="@drawable/ic_right_arrow"
+                app:endIconMode="custom">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_cC_select_doctor"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Select Doctor"
@@ -156,6 +163,7 @@
                 app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_cC_description"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_160sdp"
                     android:hint="Case Description"
@@ -167,6 +175,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btn_create_call"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Send Call"
