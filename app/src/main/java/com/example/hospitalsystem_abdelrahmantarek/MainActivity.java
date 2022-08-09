@@ -1,6 +1,7 @@
 package com.example.hospitalsystem_abdelrahmantarek;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -12,12 +13,10 @@ import com.example.hospitalsystem_abdelrahmantarek.databinding.ActivityMainBindi
 
 public class MainActivity extends AppCompatActivity {
 
-    NavController navController;
-    ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
-}
+}   

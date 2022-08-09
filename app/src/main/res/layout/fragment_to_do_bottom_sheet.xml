@@ -22,7 +22,7 @@
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_2sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:background="@color/grey"
+                android:background="@drawable/shape_border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

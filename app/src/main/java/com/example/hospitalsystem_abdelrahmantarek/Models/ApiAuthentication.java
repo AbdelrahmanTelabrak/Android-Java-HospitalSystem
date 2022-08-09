@@ -12,6 +12,8 @@ import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.AddNurseResponse
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CasesResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.ShowCaseResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAResponse;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.CreateTaskRequest;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.CreateTaskResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TasksResponse;
 
 import retrofit2.Call;
@@ -67,4 +69,8 @@ public interface ApiAuthentication {
     @GET("tasks?")
     Call<TasksResponse> getTasks(@Query("date") String date,
                                  @Header("Authorization") String token);
+
+    @POST("tasks")
+    Call<CreateTaskResponse> createTask(@Body CreateTaskRequest request,
+                                        @Header("Authorization") String token);
 }

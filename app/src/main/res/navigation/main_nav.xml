@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/prototypeMapFragment"
-        android:name="com.example.hospitalsystem_abdelrahmantarek.StartUp.PrototypeMapFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.PrototypeMapFragment"
         android:label="PrototypeMapFragment"
         tools:layout="@layout/fragment_prototype_map"/>
     <fragment
@@ -387,5 +387,29 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="null" />
+        <action
+            android:id="@+id/action_managerCreateTaskFragment_to_managerSelectEmpFragment"
+            app:destination="@id/managerSelectEmpFragment" />
+        <argument
+            android:name="empIdName"
+            app:argType="com.example.hospitalsystem_abdelrahmantarek.Models.DocNameId"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_managerCreateTaskFragment_to_managerTasksFragment"
+            app:destination="@id/managerTasksFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/managerSelectEmpFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerSelectEmpFragment"
+        android:label="ManagerSelectEmpFragment"
+        tools:layout="@layout/fragment_manager_select_emp">
+        <action
+            android:id="@+id/action_managerSelectEmpFragment_to_managerCreateTaskFragment"
+            app:destination="@id/managerCreateTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasksListFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Tasks.TasksListFragment"
+        android:label="TasksListFragment" />
 </navigation>

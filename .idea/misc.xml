@@ -31,7 +31,7 @@
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_doc_cases_list.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_doc_select_nurse.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_doctor_menu.xml" value="0.2212962962962963" />
-        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_employee_list.xml" value="0.536" />
+        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_employee_list.xml" value="0.2" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_hr_add_user.xml" value="0.1925925925925926" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_hr_profile.xml" value="0.264" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_login.xml" value="0.264" />
@@ -39,6 +39,7 @@
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_create_report.xml" value="0.20599409033347404" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_create_task.xml" value="0.2" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_menu.xml" value="0.2212962962962963" />
+        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_select_emp.xml" value="0.20599409033347404" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_tasks.xml" value="0.2228310502283105" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_nurse_add_mes.xml" value="0.264" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_nurse_calls_list.xml" value="0.2" />

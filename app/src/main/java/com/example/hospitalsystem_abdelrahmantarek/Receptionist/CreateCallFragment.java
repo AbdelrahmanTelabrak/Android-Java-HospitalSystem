@@ -49,18 +49,6 @@ public class CreateCallFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-
-        //*************_CALL BACK INTERFACE_******************
-//        String docName = "";
-//        IDoctorName iDoctorName;
-//        iDoctorName = new IDoctorName() {
-//            @Override
-//            public void getDocName(String name) {
-//                binding.etiCCSelectDoctor.setText(name);
-//            }
-//        };
-//        iDoctorName.
-
         DocNameId docNameId = CreateCallFragmentArgs.fromBundle(getArguments()).getDocData();
 
         if(CreateCallFragmentArgs.fromBundle(getArguments()).getDocData() != null){

@@ -46,15 +46,32 @@ public class DocListAdaptor extends RecyclerView.Adapter<DocListAdaptor.Holder> 
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        DNAData doctorData = doctorsList.get(position);
-        if(doctorData.getType().equals("doctor")){
-            holder.binding.itemDocTvName.setText("Dr. "+doctorData.getFirstName());
+        DNAData employeeModel = doctorsList.get(position);
+        if(employeeModel.getType().trim().equalsIgnoreCase("doctor")){
+            holder.binding.itemDocTvName.setText("Dr. "+employeeModel.getFirstName());
+            holder.binding.itemDocPp.setImageResource(R.drawable.iv_dpp_doctor);
         }
-        else {
-            holder.binding.itemDocTvName.setText(doctorData.getFirstName());
+        else if(employeeModel.getType().trim().equalsIgnoreCase("nurse")){
+            holder.binding.itemDocTvName.setText(employeeModel.getFirstName());
             holder.binding.itemDocPp.setImageResource(R.drawable.iv_dpp_nurse);
         }
-        holder.binding.itemDocTvSpecialist.setText("Specialist - "+doctorData.getType());
+        else if(employeeModel.getType().trim().equalsIgnoreCase("receptionist")){
+            holder.binding.itemDocTvName.setText(employeeModel.getFirstName());
+            holder.binding.itemDocPp.setImageResource(R.drawable.iv_dpp_receptionist);
+        }
+        else if(employeeModel.getType().trim().equalsIgnoreCase("analysis")){
+            holder.binding.itemDocTvName.setText(employeeModel.getFirstName());
+            holder.binding.itemDocPp.setImageResource(R.drawable.iv_dpp_analysis);
+        }
+        else if(employeeModel.getType().trim().equalsIgnoreCase("hr")){
+            holder.binding.itemDocTvName.setText(employeeModel.getFirstName());
+            holder.binding.itemDocPp.setImageResource(R.drawable.iv_dpp_hr);
+        }
+        else {
+            holder.binding.itemDocTvName.setText("Mr. "+employeeModel.getFirstName());
+            holder.binding.itemDocPp.setImageResource(R.drawable.iv_dpp_manager);
+        }
+        holder.binding.itemDocTvSpecialist.setText("Specialist - "+employeeModel.getType());
 
         holder.binding.itemDocRb.setChecked(position == checkedPosition);
 //        holder.binding.itemDocRb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

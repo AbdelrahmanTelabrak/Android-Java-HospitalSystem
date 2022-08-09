@@ -1,4 +1,4 @@
-package com.example.hospitalsystem_abdelrahmantarek.StartUp;
+package com.example.hospitalsystem_abdelrahmantarek;
 
 import android.os.Bundle;
 
