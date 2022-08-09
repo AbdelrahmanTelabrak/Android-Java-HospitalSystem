@@ -3,6 +3,8 @@ package com.example.hospitalsystem_abdelrahmantarek.StartUp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -38,6 +42,7 @@ public class LoginFragment extends Fragment {
     private static final String TAG = "LoginFragment";
     FragmentLoginBinding binding;
     NavController navController;
+    LoginViewModel loginViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,86 +55,95 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         navController = Navigation.findNavController(view);
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
+        binding.etiLoginEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence!=null)
+                    binding.etlLoginEmail.setErrorEnabled(false);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        binding.etiLoginPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence!=null)
+                    binding.etlLoginPassword.setErrorEnabled(false);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         binding.btnLoginLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 binding.etlLoginEmail.setErrorEnabled(false);
                 binding.etlLoginPassword.setErrorEnabled(false);
-
-                LoginRequest loginRequest = new LoginRequest(binding.etiLoginEmail.getText().toString(),
-                        binding.etiLoginPassword.getText().toString(), "sdfsfsdfsdfsdfsfs");
-
+                int verify=0;
+                if(binding.etiLoginEmail.getText().toString().isEmpty()) {
+                    binding.etlLoginEmail.setError("Email is required");
+                    verify+=1;
+                }
+                if (binding.etiLoginPassword.getText().toString().isEmpty()) {
+                    binding.etlLoginPassword.setError("Password is required");
+                    verify+=1;
+                }
+                if(verify==0) {
+                    LoginRequest loginRequest = new LoginRequest(binding.etiLoginEmail.getText().toString(),
+                            binding.etiLoginPassword.getText().toString(), "sdfsfsdfsdfsdfsfs");
+                    loginViewModel.login(loginRequest);
+                }
+                else
+                    return;
                 Log.i(TAG, "onClick: "+ binding.etiLoginEmail.getText().toString());
                 Log.i(TAG, "onClick: "+ binding.etiLoginPassword.getText().toString());
+            }
+        });
+        loginObserver();
+    }
 
-                RetrofitClient.getClient().login(loginRequest).enqueue(new Callback<LoginResponse>() {
-                    @Override
-                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        if(response.isSuccessful()){
-                            Log.i(TAG, "onResponse: is Successful");
-                            if(binding.etiLoginEmail.getText().toString().isEmpty()) {
-                                binding.etlLoginEmail.setError("Email is required");
-                            }if (binding.etiLoginPassword.getText().toString().isEmpty())
-                            {
-                                binding.etlLoginPassword.setError("Password is required");
-                            }
-                            if(!binding.etiLoginEmail.getText().toString().isEmpty() && !binding.etiLoginPassword.getText().toString().isEmpty())
-                                handleSuccessResponse(response);
-                        }
-                        else {
-                            Log.i(TAG, "onResponse: is failed");
-                            handleFailedResponse(response);
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<LoginResponse> call, Throwable t) {
-                        Toast.makeText(v.getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+    private void loginObserver(){
+        loginViewModel.getLoginSuccess().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
+                preferences.edit().putString("employee", s).apply();
+            }
+        });
+        loginViewModel.getLoginFailed().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(binding.getRoot().getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
+        loginViewModel.getEmpType().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                handleEmployeeType(s);
             }
         });
     }
 
-    private void handleFailedResponse(Response<LoginResponse> response) {
-        try {
-            Log.i(TAG, "handleFailedResponse: 1");
-            String errorResponse = response.errorBody().string();
-
-            Gson gson = new Gson();
-            ErrorResponse errorResponseObject = gson.fromJson(errorResponse, ErrorResponse.class);
-            String errorMessage = errorResponseObject.getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void handleSuccessResponse(Response<LoginResponse> response) {
-        //save login data in shared preferences
-        if(response.body().isSuccess()){
-            SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-            EmployeeModel employeeModel = new EmployeeModel(response.body().getData().getId(), response.body().getData().getFirstName(),
-                    response.body().getData().getLastName(), response.body().getData().getMobile(), response.body().getData().getEmail(),
-                    response.body().getData().getGender(), response.body().getData().getStatus(), response.body().getData().getType(),
-                    response.body().getData().getBirthday(), response.body().getData().getAddress(), response.body().getData().getCreatedAt(),
-                    response.body().getData().getVerified(), response.body().getData().getTokenType(), response.body().getData().getAccessToken());
-            String data = new Gson().toJson(employeeModel);
-            preferences.edit().putString("employee", data).apply();
-            handleEmployeeType(response);
-        }
-        else {
-            String errorMessage = response.body().getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void handleEmployeeType(Response<LoginResponse> response){
-        String empType = response.body().getData().getType();
+    private void handleEmployeeType(String empType){
         if(empType.equals("doctor")){
             navController.navigate(R.id.action_loginFragment_to_doctorMenuFragment);
         }else if(empType.equals("nurse")){

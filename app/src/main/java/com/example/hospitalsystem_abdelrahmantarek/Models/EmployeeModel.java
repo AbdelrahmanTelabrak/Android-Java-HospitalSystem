@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class EmployeeModel {
 
-    private int id;
     private String firstName;
     private String lastName;
     private String mobile;
@@ -15,13 +14,9 @@ public class EmployeeModel {
     private String type;
     private String birthday;
     private String address;
-    private String createdAt;
-    private Boolean verified;
-    private String tokenType;
     private String accessToken;
 
-    public EmployeeModel(int id, String firstName, String lastName, String mobile, String email, String gender, String status, String type, String birthday, String address, String createdAt, Boolean verified, String tokenType, String accessToken) {
-        this.id = id;
+    public EmployeeModel(String firstName, String lastName, String mobile, String email, String gender, String status, String type, String birthday, String address, String accessToken) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobile = mobile;
@@ -31,18 +26,7 @@ public class EmployeeModel {
         this.type = type;
         this.birthday = birthday;
         this.address = address;
-        this.createdAt = createdAt;
-        this.verified = verified;
-        this.tokenType = tokenType;
         this.accessToken = accessToken;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -117,55 +101,11 @@ public class EmployeeModel {
         this.address = address;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Boolean getVerified() {
-        return verified;
-    }
-
-    public void setVerified(Boolean verified) {
-        this.verified = verified;
-    }
-
-    public String getTokenType() {
-        return tokenType;
-    }
-
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
-    }
-
     public String getAccessToken() {
         return accessToken;
     }
 
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
-    }
-
-    @Override
-    public String toString() {
-        return "EmployeeModel{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", email='" + email + '\'' +
-                ", gender='" + gender + '\'' +
-                ", status='" + status + '\'' +
-                ", type='" + type + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", address='" + address + '\'' +
-                ", createdAt='" + createdAt + '\'' +
-                ", verified=" + verified +
-                ", tokenType='" + tokenType + '\'' +
-                ", accessToken='" + accessToken + '\'' +
-                '}';
     }
 }

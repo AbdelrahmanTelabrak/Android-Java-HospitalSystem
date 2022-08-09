@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.EmployeeListAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.MainActivity;
+import com.example.hospitalsystem_abdelrahmantarek.Manager.AllEmployeesViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallsResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAData;
@@ -51,6 +52,7 @@ public class EmployeeListFragment extends Fragment {
     FragmentEmployeeListBinding binding;
     EmployeeModel employeeModel;
     NavController navController;
+    AllEmployeesViewModel allEmployeesViewModel;
     EmployeeListAdaptor adaptor;
     String token;
 
