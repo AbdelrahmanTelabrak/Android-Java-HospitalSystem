@@ -55,6 +55,9 @@
             android:id="@+id/action_doctorMenuFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/main_nav" />
+        <action
+            android:id="@+id/action_doctorMenuFragment_to_tasksListFragment"
+            app:destination="@id/tasksListFragment" />
     </fragment>
 
     <fragment
@@ -86,6 +89,9 @@
             android:id="@+id/action_receptionistMenuFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/main_nav" />
+        <action
+            android:id="@+id/action_receptionistMenuFragment_to_tasksListFragment"
+            app:destination="@id/tasksListFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainMenuHrFragment"
@@ -102,6 +108,9 @@
             android:id="@+id/action_mainMenuHrFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/main_nav" />
+        <action
+            android:id="@+id/action_mainMenuHrFragment_to_tasksListFragment"
+            app:destination="@id/tasksListFragment" />
     </fragment>
     <fragment
         android:id="@+id/managerMenuFragment"
@@ -127,6 +136,12 @@
         <action
             android:id="@+id/action_managerMenuFragment_to_managerTasksFragment"
             app:destination="@id/managerTasksFragment" />
+        <action
+            android:id="@+id/action_managerMenuFragment_to_managerCasesFragment"
+            app:destination="@id/managerCasesFragment" />
+        <action
+            android:id="@+id/action_managerMenuFragment_to_tasksListFragment"
+            app:destination="@id/tasksListFragment" />
     </fragment>
     <fragment
         android:id="@+id/nurseMenuFragment"
@@ -143,6 +158,9 @@
             android:id="@+id/action_nurseMenuFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/main_nav" />
+        <action
+            android:id="@+id/action_nurseMenuFragment_to_tasksListFragment"
+            app:destination="@id/tasksListFragment" />
     </fragment>
     <fragment
         android:id="@+id/analysisEmpMenuFragment"
@@ -159,6 +177,9 @@
             android:id="@+id/action_analysisEmpMenuFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/main_nav" />
+        <action
+            android:id="@+id/action_analysisEmpMenuFragment_to_tasksListFragment"
+            app:destination="@id/tasksListFragment" />
     </fragment>
     <fragment
         android:id="@+id/hrAddUserFragment"
@@ -196,6 +217,14 @@
         <action
             android:id="@+id/action_callsFragment_to_caseDProgressFragment"
             app:destination="@id/caseDProgressFragment" />
+        <argument
+            android:name="date"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_callsFragment_to_recDateBottomSheetFragment"
+            app:destination="@id/recDateBottomSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/createCallFragment"
@@ -264,6 +293,17 @@
         <action
             android:id="@+id/action_reportsListsFragment_to_createReportFragment"
             app:destination="@id/createReportFragment" />
+        <action
+            android:id="@+id/action_reportsListsFragment_to_reportDateBSFragment"
+            app:destination="@id/reportDateBSFragment" />
+        <argument
+            android:name="date"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_reportsListsFragment_to_reportDetailsFragment"
+            app:destination="@id/reportDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/createReportFragment"
@@ -304,8 +344,11 @@
             app:destination="@id/docSelectNurseFragment" />
         <argument
             android:name="caseId"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_docCaseDFragment_to_docCaseMeasurementFragment"
+            app:destination="@id/docCaseMeasurementFragment" />
     </fragment>
     <fragment
         android:id="@+id/docSelectNurseFragment"
@@ -364,6 +407,14 @@
         <action
             android:id="@+id/action_managerTasksFragment_to_managerCreateTaskFragment"
             app:destination="@id/managerCreateTaskFragment" />
+        <action
+            android:id="@+id/action_managerTasksFragment_to_managerDateBsFragment"
+            app:destination="@id/managerDateBsFragment" />
+        <argument
+            android:name="date"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
     </fragment>
     <dialog
         android:id="@+id/toDoBottomSheetFragment"
@@ -397,7 +448,9 @@
             android:defaultValue="@null" />
         <action
             android:id="@+id/action_managerCreateTaskFragment_to_managerTasksFragment"
-            app:destination="@id/managerTasksFragment" />
+            app:destination="@id/managerTasksFragment"
+            app:popUpTo="@id/managerCreateTaskFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/managerSelectEmpFragment"
@@ -407,9 +460,123 @@
         <action
             android:id="@+id/action_managerSelectEmpFragment_to_managerCreateTaskFragment"
             app:destination="@id/managerCreateTaskFragment" />
+        <argument
+            android:name="destination"
+            app:argType="string"
+            android:defaultValue="tasks" />
+        <action
+            android:id="@+id/action_managerSelectEmpFragment_to_managerCreateReportFragment"
+            app:destination="@id/managerCreateReportFragment" />
     </fragment>
     <fragment
         android:id="@+id/tasksListFragment"
         android:name="com.example.hospitalsystem_abdelrahmantarek.Tasks.TasksListFragment"
-        android:label="TasksListFragment" />
+        android:label="TasksListFragment"
+        tools:layout="@layout/fragment_tasks_list">
+        <action
+            android:id="@+id/action_tasksListFragment_to_doctorMenuFragment"
+            app:destination="@id/doctorMenuFragment" />
+        <action
+            android:id="@+id/action_tasksListFragment_to_nurseMenuFragment"
+            app:destination="@id/nurseMenuFragment" />
+        <action
+            android:id="@+id/action_tasksListFragment_to_receptionistMenuFragment"
+            app:destination="@id/receptionistMenuFragment" />
+        <action
+            android:id="@+id/action_tasksListFragment_to_analysisEmpMenuFragment"
+            app:destination="@id/analysisEmpMenuFragment" />
+        <action
+            android:id="@+id/action_tasksListFragment_to_managerMenuFragment"
+            app:destination="@id/managerMenuFragment" />
+        <action
+            android:id="@+id/action_tasksListFragment_to_mainMenuHrFragment"
+            app:destination="@id/mainMenuHrFragment" />
+        <action
+            android:id="@+id/action_tasksListFragment_to_dateBottomSheetFragment"
+            app:destination="@id/dateBottomSheetFragment" />
+        <argument
+            android:name="date"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+    </fragment>
+    <fragment
+        android:id="@+id/managerCasesFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerCasesFragment"
+        android:label="ManagerCasesFragment"
+        tools:layout="@layout/fragment_manager_cases">
+        <action
+            android:id="@+id/action_managerCasesFragment_to_managerMenuFragment"
+            app:destination="@id/managerMenuFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/dateBottomSheetFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.DateBottomSheetFragment"
+        android:label="DateBottomSheetFragment"
+        tools:layout="@layout/fragment_date_bottom_sheet">
+        <action
+            android:id="@+id/action_dateBottomSheetFragment_to_tasksListFragment"
+            app:destination="@id/tasksListFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/recDateBottomSheetFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Receptionist.RecDateBottomSheetFragment"
+        android:label="RecDateBottomSheetFragment"
+        tools:layout="@layout/fragment_rec_date_bottom_sheet">
+        <action
+            android:id="@+id/action_recDateBottomSheetFragment_to_callsFragment"
+            app:destination="@id/callsFragment"
+            app:popUpTo="@id/callsFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/managerCreateReportFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerCreateReportFragment"
+        android:label="ManagerCreateReportFragment"
+        tools:layout="@layout/fragment_manager_create_report">
+        <action
+            android:id="@+id/action_managerCreateReportFragment_to_reportsListsFragment"
+            app:destination="@id/reportsListsFragment" />
+        <action
+            android:id="@+id/action_managerCreateReportFragment_to_managerSelectEmpFragment"
+            app:destination="@id/managerSelectEmpFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/reportDateBSFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Reports.ReportDateBSFragment"
+        android:label="ReportDateBSFragment"
+        tools:layout="@layout/fragment_report_date_b_s">
+        <action
+            android:id="@+id/action_reportDateBSFragment_to_reportsListsFragment"
+            app:destination="@id/reportsListsFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/reportDetailsFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Reports.ReportDetailsFragment"
+        android:label="ReportDetailsFragment"
+        tools:layout="@layout/fragment_report_details">
+        <argument
+            android:name="reportId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_reportDetailsFragment_to_reportsListsFragment"
+            app:destination="@id/reportsListsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/managerDateBsFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerDateBsFragment"
+        android:label="ManagerDateBsFragment"
+        tools:layout="@layout/fragment_manager_date_bs">
+        <action
+            android:id="@+id/action_managerDateBsFragment_to_managerTasksFragment"
+            app:destination="@id/managerTasksFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/docCaseMeasurementFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Doctor.DocCaseMeasurementFragment"
+        android:label="DocCaseMeasurementFragment"
+        tools:layout="@layout/fragment_doc_case_measurement">
+        <action
+            android:id="@+id/action_docCaseMeasurementFragment_to_docCaseDFragment"
+            app:destination="@id/docCaseDFragment" />
+    </fragment>
 </navigation>

@@ -1,11 +1,15 @@
 package com.example.hospitalsystem_abdelrahmantarek.Doctor;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -15,16 +19,21 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.DocCasesListAdaptor;
+import com.example.hospitalsystem_abdelrahmantarek.Manager.CasesListViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallsResponse;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CaseCardData;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CasesResponse;
+import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.CaseDetailsViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentDocCallsListBinding;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentDocCasesListBinding;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +44,9 @@ public class DocCasesListFragment extends Fragment {
 
     FragmentDocCasesListBinding binding;
     NavController navController;
+    CasesListViewModel casesListViewModel;
     DocCasesListAdaptor casesListAdaptor;
+    CaseDetailsViewModel caseDetailsViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,31 +60,11 @@ public class DocCasesListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+        caseDetailsViewModel = new ViewModelProvider(requireActivity()).get(CaseDetailsViewModel.class);
 
-        RetrofitClient.getClient().getCases("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODkxNDI5ZDNmMGM3YzNkNDAzNzU4ODA0ZWYzZjk2Y2M5MGRiZGQwZDc5N2E0NTE1MTFjMTI1YzMxMjQ4YjAzOGU3YWY5NzkzNmFlMDFhMmEiLCJpYXQiOjE2NTk1MzE2NzIuNTM2NDAyLCJuYmYiOjE2NTk1MzE2NzIuNTM2NDEsImV4cCI6MTY5MTA2NzY3Mi40NDEyODIsInN1YiI6IjIwNiIsInNjb3BlcyI6W119.q71BAp8wKeLc_uU4EevFMMlbyBSu-mN3DnBmhR8hsLdkfqq_Ae7JkypDIe_83rRE3iBq6DPLdoy3xS3eBhMVFk7Rz7WNCavfhN3NCsBDdZZtRpMTvWThMg3AdrbhszJ057pmZuumnVwBsSp9PjTwYlwNJqNEXnedNc-S2qq4f_eYxqlTctl_gLwxPnmPGQ2gtHlBDp_-QOGbf0rpz0smqcZlJ9VODZfXgY_ZeWaC-w3xf81zUbpzn9AJRjKM4gi9ojxtJp7l0cxpaTLqpLQDejbwoPCMEHqvxieUJVl62TCjxGjm7sWvv5-f77e6tkV6w-4XbJDP0oKVuCu2OwekoGmRPx1t583GbjWlHnTW8gXwcgakxdgdPxyIeAxsao5Wqf5NHodMjk-jVkNqqDXUhe4Lt3Cnc20_3WoML7gMZoe2gCUzpB-SqYvbiUQ6R_jWhc9sUYdGVXWlnYyTNntGTMWj9B8ek1NQqW_612F9A63uvlABNj1LNkbdfw7n1QieNr66Aw42nWXibEw2K5BbxtunYuEfS4t8nuo7YqeTF1zHWXt9IarDybuNRGglpymXLBufNhtPSTan90Qmkuqp6cGzt8dKE-RV372BlRvC0wu7UbloNt6OKMEjjTc1Otkis55rPV0hpTV6Lt57I8NQEKVjBicm5FekyZg1Z4O5CPY")
-                .enqueue(new Callback<CasesResponse>() {
-                    @Override
-                    public void onResponse(Call<CasesResponse> call, Response<CasesResponse> response) {
-                        if (response.isSuccessful()){
-                            if (response.body().isSuccess()){
-                                casesListAdaptor = new DocCasesListAdaptor(response.body().getData());
-                                binding.rvDclCases.setAdapter(casesListAdaptor);
-                            }
-                            else{
-                                String errorMessage = response.body().getMessage();
-                                Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else{
-                            handleFailedResponse(response);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<CasesResponse> call, Throwable t) {
-                        Toast.makeText(view.getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        casesListViewModel = new ViewModelProvider(this).get(CasesListViewModel.class);
+        casesListViewModel.getCases(binding.getRoot().getContext());
+        casesListObserver();
 
         binding.btnDclBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,17 +74,20 @@ public class DocCasesListFragment extends Fragment {
         });
     }
 
-    private void handleFailedResponse(Response<CasesResponse> response) {
-        try {
-            String errorResponse = response.errorBody().string();
-            System.out.println("ERROR RESPONSE ****************************\n"+errorResponse);
+    public void casesListObserver(){
+        casesListViewModel.getCasesListLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<CaseCardData>>() {
+            @Override
+            public void onChanged(ArrayList<CaseCardData> caseCardData) {
+                casesListAdaptor = new DocCasesListAdaptor(caseCardData, binding.getRoot().getContext(), caseDetailsViewModel);
+                binding.rvDclCases.setAdapter(casesListAdaptor);
+            }
+        });
 
-            Gson gson = new Gson();
-            ErrorResponse errorResponseObject = gson.fromJson(errorResponse, ErrorResponse.class);
-            String errorMessage = errorResponseObject.getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        casesListViewModel.getFailedResponseLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(binding.getRoot().getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

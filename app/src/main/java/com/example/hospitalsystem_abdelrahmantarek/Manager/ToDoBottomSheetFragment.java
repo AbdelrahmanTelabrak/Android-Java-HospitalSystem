@@ -34,8 +34,6 @@ public class ToDoBottomSheetFragment extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
         navController = NavHostFragment.findNavController(this);
 
         binding.bsfBtnAdd.setOnClickListener(new View.OnClickListener() {

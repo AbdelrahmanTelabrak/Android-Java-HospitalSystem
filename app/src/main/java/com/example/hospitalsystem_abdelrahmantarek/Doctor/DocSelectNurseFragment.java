@@ -59,7 +59,6 @@ public class DocSelectNurseFragment extends Fragment {
         navController = Navigation.findNavController(view);
         SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
         EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-        String token = "Bearer "+employeeModel.getAccessToken();
         int caseId = DocSelectNurseFragmentArgs.fromBundle(getArguments()).getCaseId();
 
         itemClickListener = new ItemClickListener() {
@@ -77,7 +76,7 @@ public class DocSelectNurseFragment extends Fragment {
             }
         };
 
-        RetrofitClient.getClient().getDNA("nurse", token).
+        RetrofitClient.getClient().getDNA("nurse", employeeModel.getAccessToken()).
                 enqueue(new Callback<DNAResponse>() {
                     @Override
                     public void onResponse(Call<DNAResponse> call, Response<DNAResponse> response) {
@@ -123,13 +122,13 @@ public class DocSelectNurseFragment extends Fragment {
         binding.docSNBtnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RetrofitClient.getClient().addNurse(caseId, nurseId, token).enqueue(new Callback<AddNurseResponse>() {
+                RetrofitClient.getClient().addNurse(caseId, nurseId, employeeModel.getAccessToken()).enqueue(new Callback<AddNurseResponse>() {
                     @Override
                     public void onResponse(Call<AddNurseResponse> call, Response<AddNurseResponse> response) {
                         if(response.isSuccessful()){
                             if ((response.body().isSuccess())){
                                 DocSelectNurseFragmentDirections.ActionDocSelectNurseFragmentToDocCaseDFragment action =
-                                        DocSelectNurseFragmentDirections.actionDocSelectNurseFragmentToDocCaseDFragment(String.valueOf(caseId));
+                                        DocSelectNurseFragmentDirections.actionDocSelectNurseFragmentToDocCaseDFragment().setCaseId(caseId);
                                 navController.navigate(action);
                             }
                             else {

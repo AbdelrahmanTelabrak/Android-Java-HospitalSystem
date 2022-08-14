@@ -33,7 +33,7 @@
                         android:id="@+id/iv_pp_receptionist"
                         android:layout_width="@dimen/_37sdp"
                         android:layout_height="@dimen/_37sdp"
-                        android:background="@drawable/iv_profile_photo_2"
+                        android:background="@drawable/iv_dpp_receptionist"
                         app:layout_constraintBottom_toBottomOf="@+id/linearLayout_receptionist_menu"
                         app:layout_constraintEnd_toStartOf="@+id/linearLayout_receptionist_menu"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -52,6 +52,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/tv_RM_empName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

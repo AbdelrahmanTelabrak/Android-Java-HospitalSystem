@@ -74,11 +74,14 @@
                 app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_MCR_select_emp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Select Employee"
                     android:fontFamily="@font/poppins"
-                    android:drawableEnd="@drawable/ic_right_arrow"/>
+                    android:drawableEnd="@drawable/ic_right_arrow"
+                    android:focusable="false"
+                    android:clickable="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -15,14 +15,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.MenusViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentReceptionistMenuBinding;
 
 
 public class ReceptionistMenuFragment extends Fragment {
 
     FragmentReceptionistMenuBinding binding;
-
     NavController navController;
+    MenusViewModel menusViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,8 +36,17 @@ public class ReceptionistMenuFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
         navController = Navigation.findNavController(view);
+        menusViewModel = new MenusViewModel(binding.getRoot().getContext());
+
+        binding.tvRMEmpName.setText(menusViewModel.getEmployeeModel().getFullName());
+
+        binding.ibContainerGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_receptionistMenuFragment_to_tasksListFragment);
+            }
+        });
 
         binding.ibContainerDarkBlue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,10 +55,17 @@ public class ReceptionistMenuFragment extends Fragment {
             }
         });
 
+        binding.ibContainerPurple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_receptionistMenuFragment_to_reportsListsFragment);
+            }
+        });
+
         binding.ibRMLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                preferences.edit().putString("employee", "null").apply();
+                menusViewModel.resetPreference();
                 navController.navigate(R.id.action_receptionistMenuFragment_to_loginFragment);
             }
         });

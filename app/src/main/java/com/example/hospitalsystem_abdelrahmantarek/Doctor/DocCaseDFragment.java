@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -18,11 +20,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CreateCallResponse;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CaseData;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.ShowCaseResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.CaseDetailsViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentDocCaseDBinding;
 import com.google.gson.Gson;
 
@@ -37,6 +41,8 @@ public class DocCaseDFragment extends Fragment {
 
     FragmentDocCaseDBinding binding;
     NavController navController;
+    CaseDetailsViewModel caseDetailsViewModel;
+    int caseId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,39 +56,16 @@ public class DocCaseDFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        String caseId;
-        //if (DocCaseDFragmentArgs.fromBundle(getArguments()).getCaseId() != null){
+        navController.popBackStack(R.id.docCaseMeasurementFragment, true);
+        caseDetailsViewModel = new ViewModelProvider(requireActivity()).get(CaseDetailsViewModel.class);
+
         caseId= DocCaseDFragmentArgs.fromBundle(getArguments()).getCaseId();
 
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-        String token = "Bearer "+ employeeModel.getAccessToken();
-
-        RetrofitClient.getClient().showCase(Integer.valueOf(caseId), token).enqueue(new Callback<ShowCaseResponse>() {
+        caseDetailsObserver();
+        binding.btnDCDMMeasurement.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<ShowCaseResponse> call, Response<ShowCaseResponse> response) {
-                if(response.isSuccessful()){
-                    if (response.body().isSuccess()){
-                        binding.docCDTvName.setText(response.body().getData().getPatientName());
-                        binding.docCDTvAge.setText(response.body().getData().getAge());
-                        binding.docCDTvPhone.setText(response.body().getData().getPhone());
-                        binding.docCDTvDate.setText(response.body().getData().getCreatedAt());
-                        binding.docCDTvStatus.setText(response.body().getData().getCaseStatus());
-                        binding.docCDTvCaseDescription.setText(response.body().getData().getDescription());
-                    }
-                    else {
-                        String errorMessage = response.body().getMessage();
-                        Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    handleFailedResponse(response);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ShowCaseResponse> call, Throwable t) {
-                Toast.makeText(view.getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                navController.navigate(R.id.action_docCaseDFragment_to_docCaseMeasurementFragment);
             }
         });
 
@@ -90,22 +73,32 @@ public class DocCaseDFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DocCaseDFragmentDirections.ActionDocCaseDFragmentToDocSelectNurseFragment action =
-                        DocCaseDFragmentDirections.actionDocCaseDFragmentToDocSelectNurseFragment(Integer.valueOf(caseId));
+                        DocCaseDFragmentDirections.actionDocCaseDFragmentToDocSelectNurseFragment(caseId);
                 navController.navigate(action);
             }
         });
     }
 
-    private void handleFailedResponse(Response<ShowCaseResponse> response) {
-        try {
-            String errorResponse = response.errorBody().string();
+    public void caseDetailsObserver(){
+        caseDetailsViewModel.getCaseMLiveData().observe(getViewLifecycleOwner(), new Observer<CaseData>() {
+            @Override
+            public void onChanged(CaseData caseData) {
+                caseId = caseData.getId();
+                binding.docCDTvName.setText(caseData.getPatientName());
+                binding.docCDTvAge.setText(caseData.getAge());
+                binding.docCDTvPhone.setText(caseData.getPhone());
+                binding.docCDTvDate.setText(caseData.getCreatedAt());
+                binding.docCDTvStatus.setText(caseData.getCaseStatus());
+                binding.docCDTvCaseDescription.setText(caseData.getDescription());
+            }
+        });
 
-            Gson gson = new Gson();
-            ErrorResponse errorResponseObject = gson.fromJson(errorResponse, ErrorResponse.class);
-            String errorMessage = errorResponseObject.getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        caseDetailsViewModel.getErrorMLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

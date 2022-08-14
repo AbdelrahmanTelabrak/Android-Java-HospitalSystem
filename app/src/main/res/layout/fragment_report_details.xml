@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Reports.ReportDetailsFragment">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_new_user_hr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Report Details"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/ibBackBtn_addUser"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:background="@drawable/ic_left_arrow"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_new_user_hr"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_new_user_hr" />
+
+
+                    <ImageView
+                        android:id="@+id/imageView14"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_36sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:src="@drawable/shape_grey_background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_new_user_hr" />
+
+                    <Button
+                        android:id="@+id/btn_RD_end_report"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_36sdp"
+                        android:background="@drawable/shape_button"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="End"
+                        android:textAllCaps="false"
+                        app:backgroundTint="@color/red"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView14"
+                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
+
+                    <TextView
+                        android:id="@+id/tv_RD_report_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/poppins_medium"
+                        tools:text="Report Name"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+                        app:layout_constraintStart_toStartOf="@+id/imageView14"
+                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
+
+                    <ImageView
+                        android:id="@+id/iv_RD_emp_pp"
+                        android:layout_width="@dimen/_37sdp"
+                        android:layout_height="@dimen/_37sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        tools:src="@drawable/iv_dpp_doctor"
+                        app:layout_constraintStart_toStartOf="@+id/imageView14"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout_hr_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_RD_emp_pp"
+                        app:layout_constraintStart_toEndOf="@+id/iv_RD_emp_pp"
+                        app:layout_constraintTop_toTopOf="@+id/iv_RD_emp_pp"
+                        android:layout_marginStart="@dimen/_10sdp">
+
+                        <TextView
+                            android:id="@+id/tv_RD_emp_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins"
+                            tools:text="Ebrahem Elzainy"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp" />
+
+                        <TextView
+                            android:id="@+id/tv_RD_emp_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins"
+                            tools:text="Specialist , HR"
+                            android:textColor="@color/main_green"
+                            android:textSize="@dimen/_10ssp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_RD_report_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_light"
+                        tools:text="13 Mar 2020"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout_hr_menu"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <TextView
+                        android:id="@+id/tv_RD_report_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:fontFamily="@font/poppins"
+                        tools:text="Details note : Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout_hr_menu" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_85sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:src="@drawable/iv_manager_reply"
+                        app:layout_constraintBottom_toTopOf="@+id/imageView13"
+                        app:layout_constraintStart_toStartOf="@+id/imageView13" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_RD_replies"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_28sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_RD_report_description"
+                        tools:listitem="@layout/item_manager_reply"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                    <ImageView
+                        android:id="@+id/imageView13"
+                        android:layout_width="@dimen/_2sdp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:background="#D5D5D5"
+                        app:layout_constraintBottom_toBottomOf="@+id/rv_RD_replies"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/rv_RD_replies" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etl_RD_manager_reply"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxStrokeColor="#DADADA"
+                        app:boxStrokeWidth="0dp"
+                        app:hintTextColor="@color/grey"
+                        android:background="@drawable/shape_grey_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                        app:endIconDrawable="@drawable/ic_file_upload"
+                        app:endIconMode="custom"
+                        app:layout_constraintBottom_toTopOf="@+id/btn_RD_send_reply"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eti_RD_manager_reply"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:hint="Your Reply" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <Button
+                        android:id="@+id/btn_RD_send_reply"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@drawable/shape_button"
+                        android:fontFamily="@font/poppins"
+                        android:text="Send"
+                        android:textAllCaps="false"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+</layout>

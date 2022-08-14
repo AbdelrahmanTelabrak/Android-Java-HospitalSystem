@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="@dimen/_37sdp"
+                android:layout_height="@dimen/_37sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:src="@drawable/iv_dpp_nurse"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ll_RDM_empCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+                app:layout_constraintStart_toEndOf="@+id/imageView12"
+                app:layout_constraintTop_toTopOf="@+id/imageView12">
+
+                <TextView
+                    android:id="@+id/tv_INR_nurse_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
+                    tools:text="Ebrahem Elzainy"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14ssp" />
+
+                <TextView
+                    android:id="@+id/tv_IMR_specialist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
+                    android:text="Specialist , Nurse"
+                    android:textColor="@color/main_green"
+                    android:textSize="@dimen/_10ssp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_INR_reply_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/poppins"
+                android:text="Details note : Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's "
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageView12"
+                app:layout_constraintTop_toBottomOf="@+id/ll_RDM_empCard" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Medical Measurement"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_INR_reply_description"
+                app:layout_constraintTop_toBottomOf="@+id/tv_INR_reply_description" />
+
+            <TextView
+                android:id="@+id/tv_blood_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="  Blood Pressure"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:drawableStartCompat="@drawable/ic_bullet"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/tv_sugar_analysis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="  Sugar Analysis"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:drawableStartCompat="@drawable/ic_bullet"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/tv_blood_pressure" />
+
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="  Temperature"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:drawableStartCompat="@drawable/ic_bullet"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sugar_analysis" />
+
+            <TextView
+                android:id="@+id/tv_fluid_balancne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="  Fluid Balance"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:drawableStartCompat="@drawable/ic_bullet"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/tv_temperature" />
+
+            <TextView
+                android:id="@+id/tv_respiratory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="  Respiratory Rate"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:drawableStartCompat="@drawable/ic_bullet"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/tv_fluid_balancne" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="  Heart Rate"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:drawableStartCompat="@drawable/ic_bullet"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/tv_respiratory" />
+
+            <TextView
+                android:id="@+id/tv_INR_blood_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="120 - 130"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_blood_pressure"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_blood_pressure"
+                android:layout_marginEnd="@dimen/_15sdp"/>
+
+            <TextView
+                android:id="@+id/tv_INR_sugar_analysis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="120 - 130"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_sugar_analysis"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_sugar_analysis"
+                android:layout_marginEnd="@dimen/_15sdp"/>
+
+            <TextView
+                android:id="@+id/tv_INR_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="120 - 130"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_temperature"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_temperature"
+                android:layout_marginEnd="@dimen/_15sdp"/>
+
+            <TextView
+                android:id="@+id/tv_INR_fluid_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="120 - 130"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_fluid_balancne"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_fluid_balancne"
+                android:layout_marginEnd="@dimen/_15sdp"/>
+
+            <TextView
+                android:id="@+id/tv_INR_respiratory_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                tools:text="120 - 130"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_respiratory"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_respiratory" />
+
+            <TextView
+                android:id="@+id/tv_INR_heart_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                tools:text="120 - 130"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@id/textView14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView14"
+                android:layout_marginEnd="@dimen/_15sdp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

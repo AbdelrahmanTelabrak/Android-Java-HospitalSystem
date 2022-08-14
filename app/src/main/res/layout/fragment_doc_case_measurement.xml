@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Doctor.DocCaseMeasurementFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/docCD_tvCaseDet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Case Details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:background="@drawable/ic_left_arrow"
+                    app:layout_constraintBottom_toBottomOf="@+id/docCD_tvCaseDet"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/docCD_tvCaseDet" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_DCD_case"
+                    android:maxLines="1"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:padding="@dimen/_1sdp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:text="Case"
+                    android:textSize="@dimen/_9ssp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins"
+                    app:layout_constraintEnd_toStartOf="@+id/materialButton2"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/docCD_tvCaseDet" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/materialButton2"
+                    android:maxLines="1"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:padding="@dimen/_1sdp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_DCD_case"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_DCD_m_measurement"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintHorizontal_weight="2.5"
+                    app:layout_constraintStart_toEndOf="@+id/btn_DCD_case"
+                    app:layout_constraintTop_toTopOf="@+id/btn_DCD_case"
+                    android:text="Medical Record"
+                    android:textSize="@dimen/_9ssp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_DCD_m_measurement"
+                    android:maxLines="1"
+                    android:padding="@dimen/_1sdp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_DCD_case"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintHorizontal_weight="3.5"
+                    app:layout_constraintStart_toEndOf="@+id/materialButton2"
+                    app:layout_constraintTop_toTopOf="@+id/btn_DCD_case"
+                    android:text="Medical measurement"
+                    android:textSize="@dimen/_9ssp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_DCMM_nurse_reply"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView15"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_DCD_m_measurement"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    tools:listitem="@layout/item_nurse_reply"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="0dp"
+                    android:background="#BCBCBC"
+                    android:src="@drawable/shape_button"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_DCMM_nurse_reply"
+                    app:layout_constraintStart_toStartOf="@+id/btn_DCD_case"
+                    app:layout_constraintTop_toTopOf="@+id/rv_DCMM_nurse_reply" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <Button
+                    android:id="@+id/docCD_btnEndCase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_15sdp"
+                    android:background="@drawable/shape_button"
+                    android:fontFamily="@font/poppins"
+                    android:text="End Case"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/red"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+</layout>

@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -50,11 +52,9 @@ public class EmployeeListFragment extends Fragment {
 
     private static final String TAG = "EmployeeListFragment";
     FragmentEmployeeListBinding binding;
-    EmployeeModel employeeModel;
     NavController navController;
     AllEmployeesViewModel allEmployeesViewModel;
     EmployeeListAdaptor adaptor;
-    String token;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,23 +68,15 @@ public class EmployeeListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { 
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-        employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-        token = "Bearer "+employeeModel.getAccessToken();
-        ArrayList<DNAData> AllEmployeesList = new ArrayList<>();
-        ArrayList<DNAData> doctorsList = new ArrayList<>();
-        ArrayList<DNAData> NursesList = new ArrayList<>();
-        ArrayList<DNAData> hrsList = new ArrayList<>();
-        ArrayList<DNAData> managersList = new ArrayList<>();
-        ArrayList<DNAData> receptionistsList = new ArrayList<>();
-        ArrayList<DNAData> analysisList = new ArrayList<>();
 
-        getDoctors(doctorsList);
-        getNurses(NursesList);
-        getReceptionists(receptionistsList);
-        getAnalysisEmps(analysisList);
-        getHrs(hrsList);
-        getManagers(managersList);
+        allEmployeesViewModel = new ViewModelProvider(this).get(AllEmployeesViewModel.class);
+
+        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
+        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
+
+        binding.hrEmpListBtnAll.setChecked(true);
+        allEmployeesViewModel.getEmployees(employeeModel.getAccessToken());
+        empListObserver();
 
         binding.btnAddEmpEmpList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,16 +88,7 @@ public class EmployeeListFragment extends Fragment {
         binding.hrEmpListBtnAll.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(MaterialButton button, boolean isChecked) {
-                if(AllEmployeesList.size()==0){
-                    AllEmployeesList.addAll(doctorsList);
-                    AllEmployeesList.addAll(NursesList);
-                    AllEmployeesList.addAll(receptionistsList);
-                    AllEmployeesList.addAll(analysisList);
-                    AllEmployeesList.addAll(hrsList);
-                    AllEmployeesList.addAll(managersList);
-                    Collections.shuffle(AllEmployeesList);
-                }
-                adaptor = new EmployeeListAdaptor(AllEmployeesList);
+                adaptor = new EmployeeListAdaptor(allEmployeesViewModel.getAllEmployeesList());
                 binding.rvELEmpList.setAdapter(adaptor);
             }
         });
@@ -113,7 +96,7 @@ public class EmployeeListFragment extends Fragment {
         binding.hrEmpListBtnDoc.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(MaterialButton button, boolean isChecked) {
-                adaptor = new EmployeeListAdaptor(doctorsList);
+                adaptor = new EmployeeListAdaptor(allEmployeesViewModel.getDoctorsList());
                 binding.rvELEmpList.setAdapter(adaptor);
             }
         });
@@ -121,7 +104,7 @@ public class EmployeeListFragment extends Fragment {
         binding.hrEmpListBtnNurse.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(MaterialButton button, boolean isChecked) {
-                adaptor = new EmployeeListAdaptor(NursesList);
+                adaptor = new EmployeeListAdaptor(allEmployeesViewModel.getNursesList());
                 binding.rvELEmpList.setAdapter(adaptor);
             }
         });
@@ -129,7 +112,7 @@ public class EmployeeListFragment extends Fragment {
         binding.hrEmpListBtnHr.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(MaterialButton button, boolean isChecked) {
-                adaptor = new EmployeeListAdaptor(hrsList);
+                adaptor = new EmployeeListAdaptor(allEmployeesViewModel.getHrsList());
                 binding.rvELEmpList.setAdapter(adaptor);
             }
         });
@@ -137,7 +120,7 @@ public class EmployeeListFragment extends Fragment {
         binding.hrEmpListBtnManager.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(MaterialButton button, boolean isChecked) {
-                adaptor = new EmployeeListAdaptor(managersList);
+                adaptor = new EmployeeListAdaptor(allEmployeesViewModel.getManagersList());
                 binding.rvELEmpList.setAdapter(adaptor);
             }
         });
@@ -145,7 +128,7 @@ public class EmployeeListFragment extends Fragment {
         binding.hrEmpListBtnRec.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(MaterialButton button, boolean isChecked) {
-                adaptor = new EmployeeListAdaptor(receptionistsList);
+                adaptor = new EmployeeListAdaptor(allEmployeesViewModel.getReceptionistsList());
                 binding.rvELEmpList.setAdapter(adaptor);
             }
         });
@@ -153,7 +136,7 @@ public class EmployeeListFragment extends Fragment {
         binding.hrEmpListBtnAnalysis.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(MaterialButton button, boolean isChecked) {
-                adaptor = new EmployeeListAdaptor(analysisList);
+                adaptor = new EmployeeListAdaptor(allEmployeesViewModel.getAnalysisList());
                 binding.rvELEmpList.setAdapter(adaptor);
             }
         });
@@ -188,166 +171,20 @@ public class EmployeeListFragment extends Fragment {
         });
     }
 
-    public void getDoctors(ArrayList<DNAData> data){
-        RetrofitClient.getClient().getDNA("doctor", token).enqueue(new Callback<DNAResponse>() {
+    public void empListObserver(){
+        allEmployeesViewModel.getAllEmpList().observe(getViewLifecycleOwner(), new Observer<ArrayList<DNAData>>() {
             @Override
-            public void onResponse(Call<DNAResponse> call, Response<DNAResponse> response) {
-                if(response.isSuccessful()){
-                    if(response.body().isSuccess()){
-                        data.addAll(response.body().getData());
-                    }
-                    else{
-                        String errorMessage = response.body().getMessage();
-                        Toast.makeText(binding.getRoot().getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else{
-                    handleFailedResponse(response);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DNAResponse> call, Throwable t) {
-                Toast.makeText(binding.getRoot().getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            public void onChanged(ArrayList<DNAData> data) {
+                adaptor = new EmployeeListAdaptor(data);
+                binding.rvELEmpList.setAdapter(adaptor);
             }
         });
-    }
 
-    public void getNurses(ArrayList<DNAData> data){
-        RetrofitClient.getClient().getDNA("nurse", token).enqueue(new Callback<DNAResponse>() {
+        allEmployeesViewModel.getError().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
-            public void onResponse(Call<DNAResponse> call, Response<DNAResponse> response) {
-                if(response.isSuccessful()){
-                    if(response.body().isSuccess()){
-                        data.addAll(response.body().getData());
-                    }
-                    else{
-                        String errorMessage = response.body().getMessage();
-                        Toast.makeText(binding.getRoot().getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else{
-                    handleFailedResponse(response);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DNAResponse> call, Throwable t) {
-                Toast.makeText(binding.getRoot().getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            public void onChanged(String s) {
+                Toast.makeText(binding.getRoot().getContext(), s, Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    public void getReceptionists(ArrayList<DNAData> data){
-        RetrofitClient.getClient().getDNA("receptionist", token).enqueue(new Callback<DNAResponse>() {
-            @Override
-            public void onResponse(Call<DNAResponse> call, Response<DNAResponse> response) {
-                if(response.isSuccessful()){
-                    if(response.body().isSuccess()){
-                        data.addAll(response.body().getData());
-                    }
-                    else{
-                        String errorMessage = response.body().getMessage();
-                        Toast.makeText(binding.getRoot().getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else{
-                    handleFailedResponse(response);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DNAResponse> call, Throwable t) {
-                Toast.makeText(binding.getRoot().getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void getAnalysisEmps(ArrayList<DNAData> data){
-        RetrofitClient.getClient().getDNA("analysis", token).enqueue(new Callback<DNAResponse>() {
-            @Override
-            public void onResponse(Call<DNAResponse> call, Response<DNAResponse> response) {
-                if(response.isSuccessful()){
-                    if(response.body().isSuccess()){
-                        data.addAll(response.body().getData());
-                    }
-                    else{
-                        String errorMessage = response.body().getMessage();
-                        Toast.makeText(binding.getRoot().getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else{
-                    handleFailedResponse(response);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DNAResponse> call, Throwable t) {
-                Toast.makeText(binding.getRoot().getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void getHrs(ArrayList<DNAData> data){
-        RetrofitClient.getClient().getDNA("hr", token).enqueue(new Callback<DNAResponse>() {
-            @Override
-            public void onResponse(Call<DNAResponse> call, Response<DNAResponse> response) {
-                if(response.isSuccessful()){
-                    if(response.body().isSuccess()){
-                        data.addAll(response.body().getData());
-                    }
-                    else{
-                        String errorMessage = response.body().getMessage();
-                        Toast.makeText(binding.getRoot().getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else{
-                    handleFailedResponse(response);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DNAResponse> call, Throwable t) {
-                Toast.makeText(binding.getRoot().getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void getManagers(ArrayList<DNAData> data){
-        RetrofitClient.getClient().getDNA("manger", token).enqueue(new Callback<DNAResponse>() {
-            @Override
-            public void onResponse(Call<DNAResponse> call, Response<DNAResponse> response) {
-                if(response.isSuccessful()){
-                    if(response.body().isSuccess()){
-                        data.addAll(response.body().getData());
-                    }
-                    else{
-                        String errorMessage = response.body().getMessage();
-                        Toast.makeText(binding.getRoot().getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else{
-                    handleFailedResponse(response);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DNAResponse> call, Throwable t) {
-                Toast.makeText(binding.getRoot().getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void handleFailedResponse(Response<DNAResponse> response) {
-        try {
-            String errorResponse = response.errorBody().string();
-            System.out.println("*****************ERROR*****************\n"+errorResponse);
-            Gson gson = new Gson();
-            ErrorResponse errorResponseObject = gson.fromJson(errorResponse, ErrorResponse.class);
-            String errorMessage = errorResponseObject.getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

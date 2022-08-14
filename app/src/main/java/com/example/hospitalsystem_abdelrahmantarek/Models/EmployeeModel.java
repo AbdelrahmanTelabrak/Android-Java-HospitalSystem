@@ -7,6 +7,7 @@ public class EmployeeModel {
 
     private String firstName;
     private String lastName;
+    private String fullName;
     private String mobile;
     private String email;
     private String gender;
@@ -19,6 +20,7 @@ public class EmployeeModel {
     public EmployeeModel(String firstName, String lastName, String mobile, String email, String gender, String status, String type, String birthday, String address, String accessToken) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.fullName = firstName + " " + lastName;
         this.mobile = mobile;
         this.email = email;
         this.gender = gender;
@@ -26,7 +28,7 @@ public class EmployeeModel {
         this.type = type;
         this.birthday = birthday;
         this.address = address;
-        this.accessToken = accessToken;
+        this.accessToken ="Bearer "+ accessToken;
     }
 
     public String getFirstName() {
@@ -43,6 +45,10 @@ public class EmployeeModel {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 
     public String getMobile() {
@@ -107,5 +113,22 @@ public class EmployeeModel {
 
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeModel{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", status='" + status + '\'' +
+                ", type='" + type + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", address='" + address + '\'' +
+                ", accessToken='" + accessToken + '\'' +
+                '}';
     }
 }

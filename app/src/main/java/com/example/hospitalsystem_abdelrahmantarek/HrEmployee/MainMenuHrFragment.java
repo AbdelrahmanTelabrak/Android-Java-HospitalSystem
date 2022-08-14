@@ -16,14 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.MenusViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentMainMenuHrBinding;
 
 
 public class MainMenuHrFragment extends Fragment {
 
     FragmentMainMenuHrBinding binding;
-
     NavController navController;
+    MenusViewModel menusViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,8 +37,10 @@ public class MainMenuHrFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
         navController = Navigation.findNavController(view);
+        menusViewModel = new MenusViewModel(binding.getRoot().getContext());
+
+        binding.tvHrMEmpName.setText(menusViewModel.getEmployeeModel().getFullName());
 
         binding.ibContainerOrange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,10 +49,24 @@ public class MainMenuHrFragment extends Fragment {
             }
         });
 
+        binding.ibContainerGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainMenuHrFragment_to_tasksListFragment);
+            }
+        });
+
+        binding.ibContainerPurple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainMenuHrFragment_to_reportsListsFragment);
+            }
+        });
+
         binding.ibHMLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                preferences.edit().putString("employee", "null").apply();
+                menusViewModel.resetPreference();
                 navController.navigate(R.id.action_mainMenuHrFragment_to_loginFragment);
             }
         });

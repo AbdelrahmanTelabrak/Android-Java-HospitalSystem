@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -22,8 +24,10 @@ import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallsResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TaskData;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TasksResponse;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.Tasks.TasksListFragmentArgs;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentManagerTasksBinding;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -31,6 +35,7 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -42,6 +47,7 @@ public class ManagerTasksFragment extends Fragment {
 
     FragmentManagerTasksBinding binding;
     NavController navController;
+    TasksViewModel tasksViewModel;
     TasksAdaptor adaptor;
 
     @Override
@@ -56,82 +62,22 @@ public class ManagerTasksFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker().setTitleText("Select date of birth")
-                .setSelection(MaterialDatePicker.todayInUtcMilliseconds()).build();
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-        String token = "Bearer "+employeeModel.getAccessToken();
+        navController.popBackStack(R.id.managerCreateTaskFragment, true);
 
-        RetrofitClient.getClient().getTasks("", token).enqueue(new Callback<TasksResponse>() {
-            @Override
-            public void onResponse(Call<TasksResponse> call, Response<TasksResponse> response) {
-                if (response.isSuccessful()){
-                    if (response.body().isSuccess()){
-                        adaptor = new TasksAdaptor(response.body().getData());
-                        binding.rvTasksListManager.setAdapter(adaptor);
-                    }
-                    else{
-                        String errorMessage = response.body().getMessage();
-                        Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    handleFailedResponse(response);
-                }
-            }
+        String date = "";
+        if(!ManagerTasksFragmentArgs.fromBundle(getArguments()).getDate().equals("null")) {
+            date = ManagerTasksFragmentArgs.fromBundle(getArguments()).getDate();
+            binding.etiMngtasksDate.setText(date);
+        }
 
-            @Override
-            public void onFailure(Call<TasksResponse> call, Throwable t) {
-                Toast.makeText(view.getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        tasksViewModel = new ViewModelProvider(this).get(TasksViewModel.class);
+        tasksViewModel.getTasks(date, binding.getRoot().getContext());
+        getLiveDataResponse();
 
         binding.ibDateBtnTasksManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                datePicker.show(requireActivity().getSupportFragmentManager(), "datePicker");
-
-                datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
-                    @Override
-                    public void onPositiveButtonClick(Long selection) {
-                        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-                        calendar.setTimeInMillis(selection);
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                        String formattedDate  = format.format(calendar.getTime());
-                        binding.etiMngtasksDate.setText(formattedDate);
-
-                        RetrofitClient.getClient().getTasks(formattedDate, token).enqueue(new Callback<TasksResponse>() {
-                            @Override
-                            public void onResponse(Call<TasksResponse> call, Response<TasksResponse> response) {
-                                if (response.isSuccessful()){
-                                    if (response.body().isSuccess()){
-                                        adaptor = new TasksAdaptor(response.body().getData());
-                                        binding.rvTasksListManager.setAdapter(adaptor);
-                                    }
-                                    else{
-                                        String errorMessage = response.body().getMessage();
-                                        Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    handleFailedResponse(response);
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<TasksResponse> call, Throwable t) {
-                                Toast.makeText(view.getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
-            }
-        });
-
-        binding.ibAddTaskManager.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                navController.navigate(R.id.action_managerTasksFragment_to_managerDateBsFragment);
             }
         });
 
@@ -150,16 +96,20 @@ public class ManagerTasksFragment extends Fragment {
         });
     }
 
-    private void handleFailedResponse(Response<TasksResponse> response) {
-        try {
-            String errorResponse = response.errorBody().string();
+    public void getLiveDataResponse(){
+        tasksViewModel.getListMutableLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<TaskData>>() {
+            @Override
+            public void onChanged(ArrayList<TaskData> taskData) {
+                adaptor = new TasksAdaptor(taskData);
+                binding.rvTasksListManager.setAdapter(adaptor);
+            }
+        });
 
-            Gson gson = new Gson();
-            ErrorResponse errorResponseObject = gson.fromJson(errorResponse, ErrorResponse.class);
-            String errorMessage = errorResponseObject.getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        tasksViewModel.getFailedResponseLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(binding.getRoot().getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -32,12 +32,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:enabled="true"
+                app:expandedHintEnabled="true"
+                android:defaultFocusHighlightEnabled="true"
                 app:boxCornerRadiusTopStart="@dimen/_7sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_7sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_7sdp"
                 app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_15sdp">
 

@@ -33,7 +33,7 @@
                         android:id="@+id/iv_pp_nurse"
                         android:layout_width="@dimen/_37sdp"
                         android:layout_height="@dimen/_37sdp"
-                        android:background="@drawable/iv_pp_nurse"
+                        android:src="@drawable/iv_dpp_nurse"
                         app:layout_constraintBottom_toBottomOf="@+id/linearLayout_nurse_menu"
                         app:layout_constraintEnd_toStartOf="@+id/linearLayout_nurse_menu"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -52,6 +52,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/tv_NM_empName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

@@ -10,13 +10,13 @@ public class RetrofitClient {
 
     private static Retrofit retrofit = null;
 
-    public static ApiAuthentication getClient(){
+    public static ApisFunctions getClient(){
         if(retrofit==null){
             retrofit = new Retrofit.Builder()
                     .baseUrl("http://api.instant-ss.com/api/v1/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return retrofit.create(ApiAuthentication.class);
+        return retrofit.create(ApisFunctions.class);
     }
 }

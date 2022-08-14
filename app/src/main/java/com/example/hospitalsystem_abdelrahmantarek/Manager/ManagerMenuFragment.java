@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.MenusViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentMainMenuHrBinding;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentManagerMenuBinding;
 import com.google.gson.Gson;
@@ -25,6 +26,7 @@ public class ManagerMenuFragment extends Fragment {
 
     FragmentManagerMenuBinding binding;
     NavController navController;
+    MenusViewModel menusViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,10 +40,9 @@ public class ManagerMenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-        String fullName = employeeModel.getFirstName()+" "+employeeModel.getLastName();
-        binding.tvMMFullName.setText(fullName);
+        menusViewModel = new MenusViewModel(binding.getRoot().getContext());
+
+        binding.tvMMFullName.setText(menusViewModel.getEmployeeModel().getFullName());
 
         binding.ibRectangleOrange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,10 +58,24 @@ public class ManagerMenuFragment extends Fragment {
             }
         });
 
+        binding.ibContainerDarkBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_managerMenuFragment_to_managerCasesFragment);
+            }
+        });
+
+        binding.ibContainerPurple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_managerMenuFragment_to_reportsListsFragment);
+            }
+        });
+
         binding.ibMMLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                preferences.edit().putString("employee", "null").apply();
+                menusViewModel.resetPreference();
                 navController.navigate(R.id.action_managerMenuFragment_to_loginFragment);
             }
         });

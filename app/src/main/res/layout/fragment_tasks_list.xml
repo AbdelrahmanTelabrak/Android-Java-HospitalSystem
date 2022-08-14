@@ -56,21 +56,26 @@
                 app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ete_taskDate_tasksList"
+                    android:id="@+id/eti_taskDate_tasksList"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:focusable="false"
+                    android:clickable="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
+                android:id="@+id/ib_TL_chooseDate"
                 android:layout_width="@dimen/_44sdp"
-                android:layout_height="@dimen/_44sdp"
+                android:layout_height="0dp"
                 android:background="@drawable/ic_calender_container_black"
                 app:layout_constraintTop_toTopOf="@id/etl_taskDate_tasksList"
                 app:layout_constraintBottom_toBottomOf="@id/etl_taskDate_tasksList"
-                app:layout_constraintEnd_toEndOf="@id/etl_taskDate_tasksList"/>
+                app:layout_constraintEnd_toEndOf="@id/etl_taskDate_tasksList"
+                android:layout_marginTop="@dimen/_5sdp"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_tasksList"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:paddingTop="@dimen/_15sdp"
