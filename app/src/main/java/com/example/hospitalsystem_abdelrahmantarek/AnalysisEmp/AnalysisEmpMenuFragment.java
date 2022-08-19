@@ -53,6 +53,27 @@ public class AnalysisEmpMenuFragment extends Fragment {
             }
         });
 
+        binding.ibContainerDarkBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_analysisEmpMenuFragment_to_anlCasesListFragment);
+            }
+        });
+
+        binding.ibContainerBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_analysisEmpMenuFragment_to_attendanceMenuFragment);
+            }
+        });
+
+        binding.ivPpAnalysisEmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_analysisEmpMenuFragment_to_profileFragment);
+            }
+        });
+
         binding.ivAMLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

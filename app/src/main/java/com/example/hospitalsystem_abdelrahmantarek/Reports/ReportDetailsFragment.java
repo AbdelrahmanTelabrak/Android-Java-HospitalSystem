@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.ManagerReplyAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Reports.ReportDetailsData;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.ViewModels.ReportDetailsViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Reports.ReportDetailsViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentReportDetailsBinding;
 
 import java.util.ArrayList;

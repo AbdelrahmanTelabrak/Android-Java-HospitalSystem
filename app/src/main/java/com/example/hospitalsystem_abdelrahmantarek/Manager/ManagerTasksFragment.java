@@ -1,7 +1,5 @@
 package com.example.hospitalsystem_abdelrahmantarek.Manager;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,30 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.hospitalsystem_abdelrahmantarek.Adaptors.RecCallsAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.TasksAdaptor;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallsResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
-import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TaskData;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TasksResponse;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.Tasks.TasksListFragmentArgs;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Tasks.TasksViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentManagerTasksBinding;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
-import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.TimeZone;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ManagerTasksFragment extends Fragment {
 
@@ -62,7 +43,7 @@ public class ManagerTasksFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        navController.popBackStack(R.id.managerCreateTaskFragment, true);
+        navController.popBackStack(R.id.taskDetailsFragment, true);
 
         String date = "";
         if(!ManagerTasksFragmentArgs.fromBundle(getArguments()).getDate().equals("null")) {
@@ -100,7 +81,7 @@ public class ManagerTasksFragment extends Fragment {
         tasksViewModel.getListMutableLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<TaskData>>() {
             @Override
             public void onChanged(ArrayList<TaskData> taskData) {
-                adaptor = new TasksAdaptor(taskData);
+                adaptor = new TasksAdaptor(taskData, tasksViewModel.getEmployeeModel().getType());
                 binding.rvTasksListManager.setAdapter(adaptor);
             }
         });

@@ -20,21 +20,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.example.hospitalsystem_abdelrahmantarek.Models.Authentication.LoginData;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Authentication.LoginRequest;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Authentication.LoginResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
-import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Authentication.LoginViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentLoginBinding;
-import com.google.gson.Gson;
-
-import java.io.IOException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class LoginFragment extends Fragment {

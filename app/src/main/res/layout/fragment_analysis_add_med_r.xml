@@ -45,17 +45,17 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layout_marginStart="@dimen/_28sdp"
                 android:layout_marginTop="@dimen/_24sdp"
-                android:background="@drawable/iv_measurment_pp"
+                android:background="@drawable/iv_dpp_doctor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/analysisAddMR_tvAddMedR" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tv_AAM_doc_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:fontFamily="@font/poppins"
-                android:text="Shawky Ahmed"
+                tools:text="Shawky Ahmed"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toEndOf="@+id/analysisAddMR_ivPp"
@@ -74,64 +74,17 @@
                 app:layout_constraintStart_toEndOf="@+id/analysisAddMR_ivPp" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tv_AAM_note"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/poppins"
-                android:text="Details note : Lorem Ipsum is simply dummy text of printing and typesetting industry.Lorem Ipsum"
+                tools:text="Details note : Lorem Ipsum is simply dummy text of printing and typesetting industry.Lorem Ipsum"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/analysisAddMR_ivPp"
                 app:layout_constraintTop_toBottomOf="@+id/analysisAddMR_ivPp" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_25sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/shape_button"
-                android:fontFamily="@font/poppins"
-                android:text="SGOT,SGPT"
-                android:textAllCaps="false"
-                android:textSize="@dimen/_8ssp"
-                app:layout_constraintEnd_toStartOf="@+id/button3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_60sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/shape_button"
-                android:fontFamily="@font/poppins"
-                android:text="Lipid profile"
-                android:textAllCaps="false"
-                android:textSize="@dimen/_8ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/button3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/_1sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintEnd_toStartOf="@+id/button6"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/button2"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
-                android:background="@drawable/shape_button"
-                android:text="Esr"
-                android:fontFamily="@font/poppins"
-                android:maxLines="1" />
 
 
             <ImageView
@@ -140,7 +93,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:background="@drawable/ic_left_line"
-                app:layout_constraintBottom_toBottomOf="@id/button2"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_AAM_note"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/analysisAddMR_ivPp" />
 
@@ -157,21 +110,64 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 tools:layout_editor_absoluteX="20dp" />
 
-            <ImageView
-                android:id="@+id/iv_download_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:background="@drawable/iv_download"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                android:background="@drawable/shape_border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iv_AAM_record_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:background="@drawable/iv_download"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/iv_AAM_uploaded_image"
+                            app:layout_constraintCircleRadius="@dimen/_30sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_AAM_upload_image"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="@dimen/_150sdp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/poppins"
                 android:text="Upload Image"
                 android:textAllCaps="false"
@@ -179,10 +175,11 @@
                 app:icon="@drawable/ic_add"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_download_icon"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
                 app:strokeColor="@color/main_green" />
 
             <Button
+                android:id="@+id/btn_AAM_add_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_15sdp"

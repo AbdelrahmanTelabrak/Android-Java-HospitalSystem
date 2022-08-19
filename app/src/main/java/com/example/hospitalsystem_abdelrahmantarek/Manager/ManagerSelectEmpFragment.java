@@ -21,26 +21,17 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.DocListAdaptor;
-import com.example.hospitalsystem_abdelrahmantarek.Adaptors.EmployeeListAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.ItemClickListener;
 import com.example.hospitalsystem_abdelrahmantarek.Models.DocNameId;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAData;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Employees.AllEmployeesViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentManagerSelectEmpBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ManagerSelectEmpFragment extends Fragment {
 
@@ -66,11 +57,8 @@ public class ManagerSelectEmpFragment extends Fragment {
 
         allEmployeesViewModel = new ViewModelProvider(this).get(AllEmployeesViewModel.class);
 
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-
         binding.mngEmpListBtnAll.setChecked(true);
-        allEmployeesViewModel.getEmployees(employeeModel.getAccessToken());
+        allEmployeesViewModel.getEmployees(requireContext());
         empListObserver();
 
         itemClickListener = new ItemClickListener() {

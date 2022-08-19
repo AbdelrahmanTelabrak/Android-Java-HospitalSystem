@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hospitalsystem_abdelrahmantarek.Doctor.DocCasesListFragmentDirections;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CaseCardData;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.ViewModels.CaseDetailsViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Cases.CaseDetailsViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.ItemCaseCardBinding;
 import com.google.gson.Gson;
 
@@ -26,13 +26,14 @@ public class DocCasesListAdaptor extends RecyclerView.Adapter<DocCasesListAdapto
     ArrayList<CaseCardData> casesList;
     Context context;
     CaseDetailsViewModel caseDetailsViewModel;
+    EmployeeModel employeeModel;
 
     public DocCasesListAdaptor(ArrayList<CaseCardData> casesList, Context context, CaseDetailsViewModel caseDetailsViewModel) {
         this.casesList = casesList;
         this.context = context;
         this.caseDetailsViewModel = caseDetailsViewModel;
         SharedPreferences preferences = context.getSharedPreferences("empData", Context.MODE_PRIVATE);
-        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
+        employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
     }
 
     @NonNull
@@ -52,9 +53,20 @@ public class DocCasesListAdaptor extends RecyclerView.Adapter<DocCasesListAdapto
             public void onClick(View v) {
                 caseDetailsViewModel.getCaseDetails(context, cardData.getId());
                 NavController navController = Navigation.findNavController(v);
-                DocCasesListFragmentDirections.ActionDocCasesListFragmentToDocCaseDFragment action =
-                        DocCasesListFragmentDirections.actionDocCasesListFragmentToDocCaseDFragment().setCaseId(cardData.getId());
-                navController.navigate(action);
+                if (employeeModel.getType().toLowerCase().equals("doctor")){
+                    DocCasesListFragmentDirections.ActionDocCasesListFragmentToDocCaseDFragment action =
+                            DocCasesListFragmentDirections.actionDocCasesListFragmentToDocCaseDFragment().setCaseId(cardData.getId());
+                    navController.navigate(action);
+                }
+                else if(employeeModel.getType().toLowerCase().equals("nurse")){
+                    navController.navigate(R.id.action_nurseCasesListFragment_to_nurseCaseDFragment);
+                }
+                else if (employeeModel.getType().toLowerCase().equals("analysis")){
+                    navController.navigate(R.id.action_anlCasesListFragment_to_analysisCDFragment);
+                }
+                else if (employeeModel.getType().toLowerCase().equals("manger")){
+                    navController.navigate(R.id.action_managerCasesFragment_to_managerCDFragment);
+                }
             }
         });
     }

@@ -1,11 +1,9 @@
 package com.example.hospitalsystem_abdelrahmantarek.HrEmployee;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -17,35 +15,21 @@ import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.EmployeeListAdaptor;
-import com.example.hospitalsystem_abdelrahmantarek.MainActivity;
-import com.example.hospitalsystem_abdelrahmantarek.Manager.AllEmployeesViewModel;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallsResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Employees.AllEmployeesViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAData;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.SplashScreenActivity;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentEmployeeListBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class EmployeeListFragment extends Fragment {
@@ -55,6 +39,7 @@ public class EmployeeListFragment extends Fragment {
     NavController navController;
     AllEmployeesViewModel allEmployeesViewModel;
     EmployeeListAdaptor adaptor;
+    String empType;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,11 +56,8 @@ public class EmployeeListFragment extends Fragment {
 
         allEmployeesViewModel = new ViewModelProvider(this).get(AllEmployeesViewModel.class);
 
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-
         binding.hrEmpListBtnAll.setChecked(true);
-        allEmployeesViewModel.getEmployees(employeeModel.getAccessToken());
+        allEmployeesViewModel.getEmployees(requireContext());
         empListObserver();
 
         binding.btnAddEmpEmpList.setOnClickListener(new View.OnClickListener() {
@@ -161,10 +143,10 @@ public class EmployeeListFragment extends Fragment {
         binding.ibELBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(employeeModel.getType().trim().toLowerCase().equals("manager")||employeeModel.getType().trim().toLowerCase().equals("manger")){
+                if(empType.trim().toLowerCase().equals("manager")||empType.trim().toLowerCase().equals("manger")){
                     navController.navigate(R.id.action_employeeListFragment_to_managerMenuFragment);
                 }
-                else if(employeeModel.getType().trim().toLowerCase().equals("hr")){
+                else if(empType.trim().toLowerCase().equals("hr")){
                     navController.navigate(R.id.action_employeeListFragment_to_mainMenuHrFragment);
                 }
             }
@@ -177,6 +159,13 @@ public class EmployeeListFragment extends Fragment {
             public void onChanged(ArrayList<DNAData> data) {
                 adaptor = new EmployeeListAdaptor(data);
                 binding.rvELEmpList.setAdapter(adaptor);
+            }
+        });
+
+        allEmployeesViewModel.getEmpTypeLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                empType = s;
             }
         });
 

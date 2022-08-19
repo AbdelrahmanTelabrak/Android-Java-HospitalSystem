@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_bloodP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Blood Pressure"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/grey"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_sugarA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Sugar Analysis"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/grey"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Temperature"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/grey"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_fluidB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Fluid Balance"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/grey"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_respiratoryR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Respiratory Rate"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/grey"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_heartR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Heart Rate"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/grey"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

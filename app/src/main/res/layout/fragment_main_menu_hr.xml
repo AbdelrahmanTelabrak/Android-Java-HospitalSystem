@@ -33,7 +33,7 @@
                         android:id="@+id/iv_profile_photo_hr"
                         android:layout_width="@dimen/_37sdp"
                         android:layout_height="@dimen/_37sdp"
-                        android:background="@drawable/iv_profile_photo"
+                        android:background="@drawable/iv_dpp_hr"
                         app:layout_constraintBottom_toBottomOf="@+id/linearLayout_hr_menu"
                         app:layout_constraintEnd_toStartOf="@+id/linearLayout_hr_menu"
                         app:layout_constraintHorizontal_bias="0.5"

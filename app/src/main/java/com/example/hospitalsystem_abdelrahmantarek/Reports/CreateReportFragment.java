@@ -16,10 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.hospitalsystem_abdelrahmantarek.Models.Authentication.LoginRequest;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Reports.CreateReportRequest;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.ViewModels.ReportsViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Reports.ReportsViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentCreateReportBinding;
 
 

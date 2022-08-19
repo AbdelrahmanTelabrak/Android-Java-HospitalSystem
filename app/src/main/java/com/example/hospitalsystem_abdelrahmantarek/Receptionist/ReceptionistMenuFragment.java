@@ -62,6 +62,20 @@ public class ReceptionistMenuFragment extends Fragment {
             }
         });
 
+        binding.ibContainerBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_receptionistMenuFragment_to_attendanceMenuFragment);
+            }
+        });
+
+        binding.ivPpReceptionist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_receptionistMenuFragment_to_profileFragment2);
+            }
+        });
+
         binding.ibRMLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

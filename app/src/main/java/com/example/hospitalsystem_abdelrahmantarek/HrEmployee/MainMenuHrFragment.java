@@ -38,6 +38,7 @@ public class MainMenuHrFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+        navController.popBackStack(R.id.splashScreenFragment, true);
         menusViewModel = new MenusViewModel(binding.getRoot().getContext());
 
         binding.tvHrMEmpName.setText(menusViewModel.getEmployeeModel().getFullName());
@@ -60,6 +61,20 @@ public class MainMenuHrFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_mainMenuHrFragment_to_reportsListsFragment);
+            }
+        });
+
+        binding.ibContainerBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainMenuHrFragment_to_attendanceMenuFragment);
+            }
+        });
+
+        binding.ivProfilePhotoHr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_mainMenuHrFragment_to_profileFragment);
             }
         });
 

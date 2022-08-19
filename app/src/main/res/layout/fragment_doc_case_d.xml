@@ -52,14 +52,14 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins"
-                app:layout_constraintEnd_toStartOf="@+id/materialButton2"
+                app:layout_constraintEnd_toStartOf="@+id/btn_DCD_record"
                 app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/docCD_tvCaseDet" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton2"
+                android:id="@+id/btn_DCD_record"
                 android:maxLines="1"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:padding="@dimen/_1sdp"
@@ -91,7 +91,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintHorizontal_weight="3.5"
-                app:layout_constraintStart_toEndOf="@+id/materialButton2"
+                app:layout_constraintStart_toEndOf="@+id/btn_DCD_record"
                 app:layout_constraintTop_toTopOf="@+id/materialButton"
                 android:text="Medical measurement"
                 android:textSize="@dimen/_9ssp"

@@ -1,18 +1,19 @@
 package com.example.hospitalsystem_abdelrahmantarek.Doctor;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,30 +21,29 @@ import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.DocListAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.ItemClickListener;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.AddNurseResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.DocNameId;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CaseData;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAData;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Employees.AddEmpViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Cases.CaseDetailsViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Employees.SelectEmpViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentDocSelectNurseBinding;
-import com.google.gson.Gson;
 
-import java.io.IOException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.ArrayList;
 
 
 public class DocSelectNurseFragment extends Fragment {
 
     FragmentDocSelectNurseBinding binding;
     NavController navController;
+    SelectEmpViewModel selectEmpViewModel;
+    AddEmpViewModel addEmpViewModel;
+    CaseDetailsViewModel caseDetailsViewModel;
     ItemClickListener itemClickListener;
     DocListAdaptor adaptor;
     int nurseId;
+    int caseId;
+    private static final String TAG = "DocSelectNurseFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,10 +56,13 @@ public class DocSelectNurseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.i(TAG, "onViewCreated: ");
         navController = Navigation.findNavController(view);
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-        int caseId = DocSelectNurseFragmentArgs.fromBundle(getArguments()).getCaseId();
+        selectEmpViewModel = new ViewModelProvider(this).get(SelectEmpViewModel.class);
+        addEmpViewModel = new ViewModelProvider(this).get(AddEmpViewModel.class);
+        caseDetailsViewModel = new ViewModelProvider(requireActivity()).get(CaseDetailsViewModel.class);
+
+        caseId = DocSelectNurseFragmentArgs.fromBundle(getArguments()).getCaseId();
 
         itemClickListener = new ItemClickListener() {
             @Override
@@ -76,31 +79,10 @@ public class DocSelectNurseFragment extends Fragment {
             }
         };
 
-        RetrofitClient.getClient().getDNA("nurse", employeeModel.getAccessToken()).
-                enqueue(new Callback<DNAResponse>() {
-                    @Override
-                    public void onResponse(Call<DNAResponse> call, Response<DNAResponse> response) {
-                        if (response.isSuccessful()){
-                            if(response.body().isSuccess())
-                            {
-                                adaptor = new DocListAdaptor(response.body().getData(), itemClickListener);
-                                binding.rvDSNNurses.setAdapter(adaptor);
-                            }
-                            else{
-                                String errorMessage = response.body().getMessage();
-                                Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else{
-                            handleFailedResponse(response);
-                        }
-                    }
+        selectEmpViewModel.getTypeEmp(requireContext(), "nurse");
+        typeEmpObserver();
+        addEmpObserver();
 
-                    @Override
-                    public void onFailure(Call<DNAResponse> call, Throwable t) {
-                        Toast.makeText(view.getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
 
         binding.etiDSNSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -122,56 +104,57 @@ public class DocSelectNurseFragment extends Fragment {
         binding.docSNBtnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RetrofitClient.getClient().addNurse(caseId, nurseId, employeeModel.getAccessToken()).enqueue(new Callback<AddNurseResponse>() {
-                    @Override
-                    public void onResponse(Call<AddNurseResponse> call, Response<AddNurseResponse> response) {
-                        if(response.isSuccessful()){
-                            if ((response.body().isSuccess())){
-                                DocSelectNurseFragmentDirections.ActionDocSelectNurseFragmentToDocCaseDFragment action =
-                                        DocSelectNurseFragmentDirections.actionDocSelectNurseFragmentToDocCaseDFragment().setCaseId(caseId);
-                                navController.navigate(action);
-                            }
-                            else {
-                                String errorMessage = response.body().getMessage();
-                                Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else {
-                            handleFailedResponseAN(response);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<AddNurseResponse> call, Throwable t) {
-                        Toast.makeText(view.getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                addEmpViewModel.addEmp(caseId, nurseId, requireContext());
             }
         });
     }
 
-    private void handleFailedResponse(Response<DNAResponse> response) {
-        try {
-            String errorResponse = response.errorBody().string();
-
-            Gson gson = new Gson();
-            ErrorResponse errorResponseObject = gson.fromJson(errorResponse, ErrorResponse.class);
-            String errorMessage = errorResponseObject.getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void typeEmpObserver(){
+        selectEmpViewModel.getListMLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<DNAData>>() {
+            @Override
+            public void onChanged(ArrayList<DNAData> data) {
+                adaptor = new DocListAdaptor(data, itemClickListener);
+                binding.rvDSNNurses.setAdapter(adaptor);
+            }
+        });
+        selectEmpViewModel.getErrorMLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-    private void handleFailedResponseAN(Response<AddNurseResponse> response) {
-        try {
-            String errorResponse = response.errorBody().string();
-            System.out.println("****************ERROR MESSAGE************\n"+errorResponse);
-            Gson gson = new Gson();
-            ErrorResponse errorResponseObject = gson.fromJson(errorResponse, ErrorResponse.class);
-            String errorMessage = errorResponseObject.getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+    public void addEmpObserver(){
+        addEmpViewModel.getSuccessMLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                caseDetailsViewModel.getCaseDetails(requireContext(), caseId);
+                caseDetailsObserver();
+            }
+        });
+
+        addEmpViewModel.getErrorMLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void caseDetailsObserver(){
+        caseDetailsViewModel.getCaseMLiveData().observe(getViewLifecycleOwner(), new Observer<CaseData>() {
+            @Override
+            public void onChanged(CaseData caseData) {
+                navController.navigate(R.id.action_docSelectNurseFragment_to_docCaseDFragment);
+            }
+        });
+
+        caseDetailsViewModel.getErrorMLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

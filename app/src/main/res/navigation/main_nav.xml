@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_doctorMenuFragment_to_tasksListFragment"
             app:destination="@id/tasksListFragment" />
+        <action
+            android:id="@+id/action_doctorMenuFragment_to_attendanceMenuFragment"
+            app:destination="@id/attendanceMenuFragment" />
     </fragment>
 
     <fragment
@@ -92,6 +95,9 @@
         <action
             android:id="@+id/action_receptionistMenuFragment_to_tasksListFragment"
             app:destination="@id/tasksListFragment" />
+        <action
+            android:id="@+id/action_receptionistMenuFragment_to_attendanceMenuFragment"
+            app:destination="@id/attendanceMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainMenuHrFragment"
@@ -111,6 +117,12 @@
         <action
             android:id="@+id/action_mainMenuHrFragment_to_tasksListFragment"
             app:destination="@id/tasksListFragment" />
+        <action
+            android:id="@+id/action_mainMenuHrFragment_to_attendanceMenuFragment"
+            app:destination="@id/attendanceMenuFragment" />
+        <action
+            android:id="@+id/action_mainMenuHrFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/managerMenuFragment"
@@ -142,6 +154,9 @@
         <action
             android:id="@+id/action_managerMenuFragment_to_tasksListFragment"
             app:destination="@id/tasksListFragment" />
+        <action
+            android:id="@+id/action_managerMenuFragment_to_attendanceMenuFragment"
+            app:destination="@id/attendanceMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/nurseMenuFragment"
@@ -161,6 +176,12 @@
         <action
             android:id="@+id/action_nurseMenuFragment_to_tasksListFragment"
             app:destination="@id/tasksListFragment" />
+        <action
+            android:id="@+id/action_nurseMenuFragment_to_nurseCasesListFragment"
+            app:destination="@id/nurseCasesListFragment" />
+        <action
+            android:id="@+id/action_nurseMenuFragment_to_attendanceMenuFragment"
+            app:destination="@id/attendanceMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/analysisEmpMenuFragment"
@@ -180,6 +201,12 @@
         <action
             android:id="@+id/action_analysisEmpMenuFragment_to_tasksListFragment"
             app:destination="@id/tasksListFragment" />
+        <action
+            android:id="@+id/action_analysisEmpMenuFragment_to_anlCasesListFragment"
+            app:destination="@id/anlCasesListFragment" />
+        <action
+            android:id="@+id/action_analysisEmpMenuFragment_to_attendanceMenuFragment"
+            app:destination="@id/attendanceMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/hrAddUserFragment"
@@ -338,7 +365,8 @@
         tools:layout="@layout/fragment_doc_case_d">
         <action
             android:id="@+id/action_docCaseDFragment_to_docCasesListFragment"
-            app:destination="@id/docCasesListFragment" />
+            app:destination="@id/docCasesListFragment"
+            app:popUpTo="@id/doctorMenuFragment" />
         <action
             android:id="@+id/action_docCaseDFragment_to_docSelectNurseFragment"
             app:destination="@id/docSelectNurseFragment" />
@@ -349,6 +377,12 @@
         <action
             android:id="@+id/action_docCaseDFragment_to_docCaseMeasurementFragment"
             app:destination="@id/docCaseMeasurementFragment" />
+        <action
+            android:id="@+id/action_docCaseDFragment_to_requestBottomSheetFragment"
+            app:destination="@id/requestBottomSheetFragment" />
+        <action
+            android:id="@+id/action_docCaseDFragment_to_docCRecordFragment"
+            app:destination="@id/docCRecordFragment" />
     </fragment>
     <fragment
         android:id="@+id/docSelectNurseFragment"
@@ -415,6 +449,9 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="null" />
+        <action
+            android:id="@+id/action_managerTasksFragment_to_taskDetailsFragment"
+            app:destination="@id/taskDetailsFragment" />
     </fragment>
     <dialog
         android:id="@+id/toDoBottomSheetFragment"
@@ -449,8 +486,7 @@
         <action
             android:id="@+id/action_managerCreateTaskFragment_to_managerTasksFragment"
             app:destination="@id/managerTasksFragment"
-            app:popUpTo="@id/managerCreateTaskFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/managerMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/managerSelectEmpFragment"
@@ -499,6 +535,9 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="null" />
+        <action
+            android:id="@+id/action_tasksListFragment_to_taskDetailsFragment"
+            app:destination="@id/taskDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/managerCasesFragment"
@@ -508,6 +547,9 @@
         <action
             android:id="@+id/action_managerCasesFragment_to_managerMenuFragment"
             app:destination="@id/managerMenuFragment" />
+        <action
+            android:id="@+id/action_managerCasesFragment_to_managerCDFragment"
+            app:destination="@id/managerCDFragment" />
     </fragment>
     <dialog
         android:id="@+id/dateBottomSheetFragment"
@@ -578,5 +620,248 @@
         <action
             android:id="@+id/action_docCaseMeasurementFragment_to_docCaseDFragment"
             app:destination="@id/docCaseDFragment" />
+        <action
+            android:id="@+id/action_docCaseMeasurementFragment_to_docCRecordFragment"
+            app:destination="@id/docCRecordFragment" />
+        <action
+            android:id="@+id/action_docCaseMeasurementFragment_to_docCasesListFragment"
+            app:destination="@id/docCasesListFragment"
+            app:popUpTo="@id/doctorMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nurseCasesListFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Nurse.NurseCasesListFragment"
+        android:label="NurseCasesListFragment"
+        tools:layout="@layout/fragment_nurse_cases_list">
+        <action
+            android:id="@+id/action_nurseCasesListFragment_to_nurseCaseDFragment"
+            app:destination="@id/nurseCaseDFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nurseCaseDFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Nurse.NurseCaseDFragment"
+        android:label="NurseCaseDFragment"
+        tools:layout="@layout/fragment_nurse_case_d">
+        <action
+            android:id="@+id/action_nurseCaseDFragment_to_nurseCaseMMeasurementFragment"
+            app:destination="@id/nurseCaseMMeasurementFragment" />
+        <action
+            android:id="@+id/action_nurseCaseDFragment_to_nurseAddMesFragment"
+            app:destination="@id/nurseAddMesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nurseAddMesFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Nurse.NurseAddMesFragment"
+        android:label="NurseAddMesFragment"
+        tools:layout="@layout/fragment_nurse_add_mes">
+        <action
+            android:id="@+id/action_nurseAddMesFragment_to_nurseCaseDFragment"
+            app:destination="@id/nurseCaseDFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nurseCaseMMeasurementFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Nurse.NurseCaseMMeasurementFragment"
+        android:label="fragment_nurse_case_m_measurement"
+        tools:layout="@layout/fragment_nurse_case_m_measurement" >
+        <action
+            android:id="@+id/action_nurseCaseMMeasurementFragment_to_nurseCaseDFragment"
+            app:destination="@id/nurseCaseDFragment" />
+        <action
+            android:id="@+id/action_nurseCaseMMeasurementFragment_to_nurseAddMesFragment"
+            app:destination="@id/nurseAddMesFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/requestBottomSheetFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Doctor.RequestBottomSheetFragment"
+        android:label="RequestBottomSheetFragment"
+        tools:layout="@layout/fragment_request_bottom_sheet">
+        <action
+            android:id="@+id/action_requestBottomSheetFragment_to_docRequestMeasurementFragment"
+            app:destination="@id/docRequestMeasurementFragment" />
+        <action
+            android:id="@+id/action_requestBottomSheetFragment_to_docRequestRecordFragment"
+            app:destination="@id/docRequestRecordFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/docRequestMeasurementFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Doctor.DocRequestMeasurementFragment"
+        android:label="fragment_doc_request_measurement"
+        tools:layout="@layout/fragment_doc_request_measurement" />
+    <fragment
+        android:id="@+id/docRequestRecordFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Doctor.DocRequestRecordFragment"
+        android:label="DocRequestRecordFragment"
+        tools:layout="@layout/fragment_doc_request_record">
+        <action
+            android:id="@+id/action_docRequestRecordFragment_to_docSelectAnlFragment"
+            app:destination="@id/docSelectAnlFragment" />
+        <action
+            android:id="@+id/action_docRequestRecordFragment_to_docCaseDFragment"
+            app:destination="@id/docCaseDFragment"
+            app:popUpTo="@id/docCasesListFragment" />
+        <argument
+            android:name="anlNameId"
+            app:argType="com.example.hospitalsystem_abdelrahmantarek.Models.DocNameId"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/docSelectAnlFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Doctor.DocSelectAnlFragment"
+        android:label="DocSelectAnlFragment"
+        tools:layout="@layout/fragment_doc_select_anl">
+        <action
+            android:id="@+id/action_docSelectAnlFragment_to_docRequestRecordFragment"
+            app:destination="@id/docRequestRecordFragment" />
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/anlCasesListFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.AnalysisEmp.AnlCasesListFragment"
+        android:label="AnlCasesListFragment"
+        tools:layout="@layout/fragment_anl_cases_list">
+        <action
+            android:id="@+id/action_anlCasesListFragment_to_analysisCDFragment"
+            app:destination="@id/analysisCDFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/analysisCDFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.AnalysisEmp.AnalysisCDFragment"
+        android:label="AnalysisCDFragment"
+        tools:layout="@layout/fragment_analysis_c_d">
+        <action
+            android:id="@+id/action_analysisCDFragment_to_analysisAddMedRFragment"
+            app:destination="@id/analysisAddMedRFragment" />
+        <action
+            android:id="@+id/action_analysisCDFragment_to_anlCRecordFragment"
+            app:destination="@id/anlCRecordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/analysisAddMedRFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.AnalysisEmp.AnalysisAddMedRFragment"
+        android:label="AnalysisAddMedRFragment"
+        tools:layout="@layout/fragment_analysis_add_med_r">
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_analysisAddMedRFragment_to_analysisCDFragment"
+            app:destination="@id/analysisCDFragment"
+            app:popUpTo="@id/anlCasesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/docCRecordFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Doctor.DocCRecordFragment"
+        android:label="DocCRecordFragment"
+        tools:layout="@layout/fragment_doc_c_record">
+        <action
+            android:id="@+id/action_docCRecordFragment_to_docCaseMeasurementFragment"
+            app:destination="@id/docCaseMeasurementFragment" />
+        <action
+            android:id="@+id/action_docCRecordFragment_to_docCaseDFragment"
+            app:destination="@id/docCaseDFragment" />
+        <action
+            android:id="@+id/action_docCRecordFragment_to_docCasesListFragment"
+            app:destination="@id/docCasesListFragment"
+            app:popUpTo="@id/doctorMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/anlCRecordFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.AnalysisEmp.AnlCRecordFragment"
+        android:label="AnlCRecordFragment"
+        tools:layout="@layout/fragment_anl_c_record">
+        <action
+            android:id="@+id/action_anlCRecordFragment_to_analysisCDFragment"
+            app:destination="@id/analysisCDFragment"
+            app:popUpTo="@id/anlCasesListFragment" />
+        <action
+            android:id="@+id/action_anlCRecordFragment_to_analysisAddMedRFragment"
+            app:destination="@id/analysisAddMedRFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/managerCDFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerCDFragment"
+        android:label="ManagerCDFragment"
+        tools:layout="@layout/fragment_manager_c_d">
+        <action
+            android:id="@+id/action_managerCDFragment_to_managerCMesFragment"
+            app:destination="@id/managerCMesFragment" />
+        <action
+            android:id="@+id/action_managerCDFragment_to_managerCRecordFragment"
+            app:destination="@id/managerCRecordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/managerCMesFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerCMesFragment"
+        android:label="ManagerCMesFragment"
+        tools:layout="@layout/fragment_manager_c_mes">
+        <action
+            android:id="@+id/action_managerCMesFragment_to_managerCRecordFragment"
+            app:destination="@id/managerCRecordFragment" />
+        <action
+            android:id="@+id/action_managerCMesFragment_to_managerCDFragment"
+            app:destination="@id/managerCDFragment"
+            app:popUpTo="@id/managerCasesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/managerCRecordFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerCRecordFragment"
+        android:label="ManagerCRecordFragment"
+        tools:layout="@layout/fragment_manager_c_record">
+        <action
+            android:id="@+id/action_managerCRecordFragment_to_managerCMesFragment"
+            app:destination="@id/managerCMesFragment" />
+        <action
+            android:id="@+id/action_managerCRecordFragment_to_managerCDFragment"
+            app:destination="@id/managerCDFragment"
+            app:popUpTo="@id/managerCasesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/attendanceMenuFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Attendance.AttendanceMenuFragment"
+        android:label="AttendanceMenuFragment"
+        tools:layout="@layout/fragment_attendance_menu">
+        <action
+            android:id="@+id/action_attendanceMenuFragment_to_touchIdFragment"
+            app:destination="@id/touchIdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/touchIdFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Attendance.TouchIdFragment"
+        android:label="TouchIdFragment"
+        tools:layout="@layout/fragment_touch_id">
+        <action
+            android:id="@+id/action_touchIdFragment_to_attendanceRegisteredFragment"
+            app:destination="@id/attendanceRegisteredFragment"
+            app:popUpTo="@id/attendanceMenuFragment" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/attendanceRegisteredFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Attendance.AttendanceRegisteredFragment"
+        android:label="AttendanceRegisteredFragment"
+        tools:layout="@layout/fragment_attendance_registered">
+        <action
+            android:id="@+id/action_attendanceRegisteredFragment_to_attendanceMenuFragment"
+            app:destination="@id/attendanceMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskDetailsFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Tasks.TaskDetailsFragment"
+        android:label="TaskDetailsFragment"
+        tools:layout="@layout/fragment_task_details">
+        <action
+            android:id="@+id/action_taskDetailsFragment_to_tasksListFragment"
+            app:destination="@id/tasksListFragment" />
+        <action
+            android:id="@+id/action_taskDetailsFragment_to_managerTasksFragment"
+            app:destination="@id/managerTasksFragment" />
+        <argument
+            android:name="taskId"
+            app:argType="integer" />
     </fragment>
 </navigation>

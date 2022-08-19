@@ -1,14 +1,13 @@
 package com.example.hospitalsystem_abdelrahmantarek.Adaptors;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hospitalsystem_abdelrahmantarek.Models.NurseReply;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.NurseReply;
 import com.example.hospitalsystem_abdelrahmantarek.R;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.ItemNurseReplyBinding;
 

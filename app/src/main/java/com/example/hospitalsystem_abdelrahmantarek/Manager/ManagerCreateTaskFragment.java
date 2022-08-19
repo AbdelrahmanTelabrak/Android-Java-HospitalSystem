@@ -8,9 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,29 +21,21 @@ import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.ToDoAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Models.DocNameId;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
-import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.CreateTaskRequest;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.CreateTaskResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TasksResponse;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Tasks.CreateTaskViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentManagerCreateTaskBinding;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ManagerCreateTaskFragment extends Fragment {
 
     FragmentManagerCreateTaskBinding binding;
     NavController navController;
     CreateTaskViewModel createTaskViewModel;
-    static ArrayList<String >  list = new ArrayList<>();
+    static ArrayList<String> list = new ArrayList<>();
     ToDoAdaptor adaptor;
     static DocNameId empData;
     private static final String TAG = "ManagerCreateTaskFragment";
@@ -64,10 +54,6 @@ public class ManagerCreateTaskFragment extends Fragment {
         navController = Navigation.findNavController(view);
 
         createTaskViewModel = new ViewModelProvider(this).get(CreateTaskViewModel.class);
-
-        SharedPreferences preferences = getContext().getSharedPreferences("empData", Context.MODE_PRIVATE);
-        EmployeeModel employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
-
         getCreateTaskResponse();
 
         if(empData==null || ManagerCreateTaskFragmentArgs.fromBundle(getArguments()).getEmpIdName()!=null){
@@ -117,7 +103,7 @@ public class ManagerCreateTaskFragment extends Fragment {
                 if(verify==0){
                     CreateTaskRequest request = new CreateTaskRequest(empData.getId(), binding.etiMCTTaskName.getText().toString(),
                             binding.etiMCTDescription.getText().toString(), list);
-                    createTaskViewModel.createTask(request, employeeModel.getAccessToken());
+                    createTaskViewModel.createTask(request, requireContext());
                 }
             }
         });
@@ -162,24 +148,6 @@ public class ManagerCreateTaskFragment extends Fragment {
         if (empData!=null){
             binding.etiMCTSelectEmp.setText(empData.getName());
         }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i(TAG, "onStart: ");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop: ");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause: ");
     }
 
     @Override

@@ -19,10 +19,8 @@ import android.widget.Toast;
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.ReportsAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Reports.ReportCardData;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.Receptionist.CallsFragmentArgs;
-import com.example.hospitalsystem_abdelrahmantarek.Tasks.TasksListFragmentArgs;
 import com.example.hospitalsystem_abdelrahmantarek.ViewModels.MenusViewModel;
-import com.example.hospitalsystem_abdelrahmantarek.ViewModels.ReportsViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Reports.ReportsViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentReportsListsBinding;
 
 import java.util.ArrayList;

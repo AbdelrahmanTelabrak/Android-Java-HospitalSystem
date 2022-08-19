@@ -63,9 +63,10 @@
                 app:layout_constraintTop_toTopOf="@id/iv_profile_container" />
 
             <ImageView
+                android:id="@+id/iv_profile_picture"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
-                android:background="@drawable/iv_pp_profile_fragment"
+                tools:src="@drawable/iv_pp_profile_fragment"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_profile_shape_circle"
                 app:layout_constraintEnd_toEndOf="@+id/iv_profile_shape_circle"
                 app:layout_constraintStart_toStartOf="@+id/iv_profile_shape_circle"
@@ -97,13 +98,14 @@
                 app:layout_constraintVertical_chainStyle="spread_inside" />
 
             <TextView
+                android:id="@+id/tv_profile_specialist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_specialist_icon"
                 app:layout_constraintStart_toEndOf="@id/iv_specialist_icon"
                 app:layout_constraintTop_toTopOf="@id/iv_specialist_icon"
-                android:text="Specialist - Doctor"
+                tools:text="Specialist - Doctor"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 android:fontFamily="@font/poppins_medium"/>
@@ -119,13 +121,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_specialist_icon" />
 
             <TextView
+                android:id="@+id/tv_profile_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_gender_icon"
                 app:layout_constraintStart_toEndOf="@id/iv_gender_icon"
                 app:layout_constraintTop_toTopOf="@id/iv_gender_icon"
-                android:text="Male"
+                tools:text="Male"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 android:fontFamily="@font/poppins_medium"/>
@@ -141,13 +144,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_gender_icon" />
 
             <TextView
+                android:id="@+id/tv_profile_birthdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_calender_icon"
                 app:layout_constraintStart_toEndOf="@id/iv_calender_icon"
                 app:layout_constraintTop_toTopOf="@id/iv_calender_icon"
-                android:text="29-03-1997"
+                tools:text="29-03-1997"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 android:fontFamily="@font/poppins_medium"/>
@@ -163,13 +167,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_calender_icon" />
 
             <TextView
+                android:id="@+id/tv_profile_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_address_icon"
                 app:layout_constraintStart_toEndOf="@id/iv_address_icon"
                 app:layout_constraintTop_toTopOf="@id/iv_address_icon"
-                android:text="Mansoura , Shirben"
+                tools:text="Mansoura , Shirben"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 android:fontFamily="@font/poppins_medium"/>
@@ -185,13 +190,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_address_icon" />
 
             <TextView
+                android:id="@+id/tv_profile_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_status_icon"
                 app:layout_constraintStart_toEndOf="@id/iv_status_icon"
                 app:layout_constraintTop_toTopOf="@id/iv_status_icon"
-                android:text="Single"
+                tools:text="Single"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 android:fontFamily="@font/poppins_medium"/>
@@ -207,13 +213,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_status_icon" />
 
             <TextView
+                android:id="@+id/tv_profile_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_email_icon"
                 app:layout_constraintStart_toEndOf="@id/iv_email_icon"
                 app:layout_constraintTop_toTopOf="@id/iv_email_icon"
-                android:text="ebrahemelzainy@gmail.com"
+                tools:text="ebrahemelzainy@gmail.com"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 android:fontFamily="@font/poppins_medium"/>
@@ -230,13 +237,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_email_icon" />
 
             <TextView
+                android:id="@+id/tv_profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_phone_icon"
                 app:layout_constraintStart_toEndOf="@id/iv_phone_icon"
                 app:layout_constraintTop_toTopOf="@id/iv_phone_icon"
-                android:text="096521145523"
+                tools:text="096521145523"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 android:fontFamily="@font/poppins_medium"/>

@@ -55,6 +55,27 @@ public class NurseMenuFragment extends Fragment {
             }
         });
 
+        binding.ibRectangleOrange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_nurseMenuFragment_to_nurseCasesListFragment);
+            }
+        });
+
+        binding.ibContainerBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_nurseMenuFragment_to_attendanceMenuFragment);
+            }
+        });
+
+        binding.ivPpNurse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_nurseMenuFragment_to_profileFragment);
+            }
+        });
+
         binding.ibNMLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

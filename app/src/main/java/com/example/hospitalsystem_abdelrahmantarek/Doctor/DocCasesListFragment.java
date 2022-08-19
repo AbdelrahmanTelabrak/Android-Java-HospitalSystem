@@ -1,7 +1,5 @@
 package com.example.hospitalsystem_abdelrahmantarek.Doctor;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,25 +17,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.DocCasesListAdaptor;
-import com.example.hospitalsystem_abdelrahmantarek.Manager.CasesListViewModel;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallsResponse;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Cases.CasesListViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CaseCardData;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CasesResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
-import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.ViewModels.CaseDetailsViewModel;
-import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentDocCallsListBinding;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Cases.CaseDetailsViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentDocCasesListBinding;
-import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class DocCasesListFragment extends Fragment {

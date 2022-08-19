@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.TasksAdaptor;
-import com.example.hospitalsystem_abdelrahmantarek.Manager.TasksViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Tasks.TasksViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TaskData;
 import com.example.hospitalsystem_abdelrahmantarek.R;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentTasksListBinding;
@@ -44,6 +44,7 @@ public class TasksListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+        navController.popBackStack(R.id.taskDetailsFragment, true);
         String date = "";
         if(!TasksListFragmentArgs.fromBundle(getArguments()).getDate().equals("null")) {
             date = TasksListFragmentArgs.fromBundle(getArguments()).getDate();
@@ -66,7 +67,7 @@ public class TasksListFragment extends Fragment {
         tasksViewModel.getListMutableLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<TaskData>>() {
             @Override
             public void onChanged(ArrayList<TaskData> taskData) {
-                adaptor = new TasksAdaptor(taskData);
+                adaptor = new TasksAdaptor(taskData, tasksViewModel.getEmployeeModel().getType());
                 binding.rvTasksList.setAdapter(adaptor);
             }
         });

@@ -8,8 +8,10 @@ import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.AcceptRejectResp
 import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallsResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CreateCallRequest;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CreateCallResponse;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.AddMeasurementRequest;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.AddNurseResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CasesResponse;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.RequestAnlRequest;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.ShowCaseResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Reports.AnswerReportResponse;
@@ -21,8 +23,12 @@ import com.example.hospitalsystem_abdelrahmantarek.Models.Reports.ReportsListRes
 import com.example.hospitalsystem_abdelrahmantarek.Models.Reports.ShowReportResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.CreateTaskRequest;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.CreateTaskResponse;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.ShowTaskResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TasksResponse;
 
+import java.util.ArrayList;
+
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -30,8 +36,10 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -41,7 +49,8 @@ public interface ApisFunctions {
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
     @POST("register")
-    Call<RegisterResponse> register(@Body RegisterRequest registerRequest);
+    Call<RegisterResponse> register(@Body RegisterRequest registerRequest,
+                                    @Header("Authorization") String token);
 
     @GET("calls?")
     Call<CallsResponse> getCalls(@Query("date") String date,
@@ -107,4 +116,37 @@ public interface ApisFunctions {
     Call<AnswerReportResponse> answerReport(@Path("reportId") int reportId,
                                             @Field("answer") String answer,
                                             @Header("Authorization") String token);
+
+    @POST("measurement")
+    Call<SimpleResponse> addMeasurement(@Body AddMeasurementRequest request,
+                                        @Header("Authorization") String token);
+
+    @POST("make-request")
+    Call<SimpleResponse> makeRequest(@Body RequestAnlRequest request,
+                                     @Header("Authorization") String token);
+
+    @Multipart
+    @POST("medical-record")
+    Call<SimpleResponse> addRecord(@Part("call_id") int caseId,
+                                   @Part("note") String note,
+                                   @Part("status") String status,
+                                   @Header("Authorization") String token,
+                                   @Part MultipartBody.Part image);
+
+    @PUT("calls/{caseId}")
+    Call<SimpleResponse> endCase(@Path("caseId") int caseId,
+                                 @Header("Authorization") String token);
+
+    @FormUrlEncoded
+    @POST("attendance")
+    Call<SimpleResponse> attendance(@Field("status") String status,
+                                    @Header("Authorization") String token);
+
+    @GET("tasks/{taskId}")
+    Call<ShowTaskResponse> showTask(@Path("taskId") int taskId,
+                                    @Header("Authorization") String token);
+
+    @PUT("tasks/{taskId}")
+    Call<SimpleResponse> executeTask(@Path("taskId") int taskId,
+                                    @Header("Authorization") String token);
 }

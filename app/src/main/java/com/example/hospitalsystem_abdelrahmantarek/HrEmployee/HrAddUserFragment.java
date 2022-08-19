@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -13,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Models.Authentication.LoginResponse;
@@ -21,6 +25,7 @@ import com.example.hospitalsystem_abdelrahmantarek.Models.Authentication.Registe
 import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
 import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Authentication.RegisterViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentHrAddUserBinding;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -29,7 +34,9 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 
 import retrofit2.Call;
@@ -40,8 +47,8 @@ public class HrAddUserFragment extends Fragment {
 
     private static final String TAG = "HrAddUserFragment";
     FragmentHrAddUserBinding binding;
-
     NavController navController;
+    RegisterViewModel registerViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,12 +61,45 @@ public class HrAddUserFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         navController = Navigation.findNavController(view);
+        navController.popBackStack(R.id.employeeListFragment, true);
+        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
 
-        //binding.etiHrNUBirthday.setText(getTodayDate());
+        String[] listGender = {"male", "female"};
+        String[] listSpecialist = {"doctor", "receptionist", "nurse", "analysis", "hr", "manager"};
+        String[] listStatus = {"single", "married"};
+
+        ArrayAdapter<String> adapterGender = new ArrayAdapter<String>(requireContext(), R.layout.item_dropdown_list, listGender);
+        ArrayAdapter<String> adapterSpecialist = new ArrayAdapter<String>(requireContext(), R.layout.item_dropdown_list, listSpecialist);
+        ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(requireContext(), R.layout.item_dropdown_list, listStatus);
+
+        binding.etiHrNUGender.setAdapter(adapterGender);
+        binding.etiHrNUSpecialist.setAdapter(adapterSpecialist);
+        binding.etiHrNUStatus.setAdapter(adapterStatus);
+
         MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker().setTitleText("Select date of birth")
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds()).build();
+
+        binding.etiHrNUGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.etiHrNUGender.showDropDown();
+            }
+        });
+
+        binding.etiHrNUSpecialist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.etiHrNUSpecialist.showDropDown();
+            }
+        });
+
+        binding.etiHrNUStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.etiHrNUStatus.showDropDown();
+            }
+        });
 
         binding.btnHrNUCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,24 +113,7 @@ public class HrAddUserFragment extends Fragment {
                         binding.etiHrNUMobile.getText().toString(), binding.etiHrNUSpecialist.getText().toString());
 
                 if(handleTextFields()){
-                    RetrofitClient.getClient().register(registerRequest).enqueue(new Callback<RegisterResponse>() {
-                        @Override
-                        public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                            if(response.isSuccessful())
-                            {
-                                handleSuccessResponse(response);
-                            }
-                            else
-                            {
-                                handleFailedResponse(response);
-                            }
-                        }
 
-                        @Override
-                        public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                            Toast.makeText(v.getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
                 }
             }
         });
@@ -119,6 +142,24 @@ public class HrAddUserFragment extends Fragment {
                 navController.navigate(R.id.action_hrAddUserFragment_to_employeeListFragment);
             }
         });
+
+        registerObserver();
+    }
+
+    private void registerObserver(){
+        registerViewModel.getSuccessMLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                navController.navigate(R.id.action_hrAddUserFragment_to_employeeListFragment);
+            }
+        });
+
+        registerViewModel.getErrorMLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private boolean handleTextFields() {
@@ -133,7 +174,7 @@ public class HrAddUserFragment extends Fragment {
         if(binding.etiHrNUSpecialist.getText().toString().isEmpty())
             binding.etlSpecialistNUHr.setError("Specialist is required");
         if(binding.etiHrNUBirthday.getText().toString().isEmpty())
-            binding.etlBirthdayNUHr.setError("Data of birth is required");
+            binding.etlBirthdayNUHr.setError("TaskDetails of birth is required");
         if(binding.etiHrNUStatus.getText().toString().isEmpty())
             binding.etlStatusNUHr.setError("Status is required");
         if(binding.etiHrNUMobile.getText().toString().isEmpty())
@@ -154,47 +195,6 @@ public class HrAddUserFragment extends Fragment {
 
         return bool;
     }
-
-    private void handleSuccessResponse(Response<RegisterResponse> response) {
-        //save login data in shared preferences
-
-        if(response.body().isSuccess()){
-            navController.navigate(R.id.action_hrAddUserFragment_to_employeeListFragment);
-        }
-        else {
-            String errorMessage = response.body().getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void handleFailedResponse(Response<RegisterResponse> response) {
-        try {
-            String errorResponse = response.errorBody().string();
-            System.out.println("ERROR RESPONSE*************************"+errorResponse);
-
-            Gson gson = new Gson();
-            ErrorResponse errorResponseObject = gson.fromJson(errorResponse, ErrorResponse.class);
-            String errorMessage = errorResponseObject.getMessage();
-            Toast.makeText(this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String getTodayDate() {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        month++;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        return makeDateString(day, month, year);
-    }
-
-    private String makeDateString(int day, int month, int year) {
-        return getMonthFormat(month)+ " " + day + " " + year;
-    }
-
     private String getMonthFormat(int month) {
         if(month == 1)
             return "JAN";

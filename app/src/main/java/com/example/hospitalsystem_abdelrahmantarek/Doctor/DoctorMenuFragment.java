@@ -1,7 +1,5 @@
 package com.example.hospitalsystem_abdelrahmantarek.Doctor;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,11 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.R;
 import com.example.hospitalsystem_abdelrahmantarek.ViewModels.MenusViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentDoctorMenuBinding;
-import com.google.gson.Gson;
 
 
 public class DoctorMenuFragment extends Fragment {
@@ -68,6 +64,20 @@ public class DoctorMenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_doctorMenuFragment_to_reportsListsFragment);
+            }
+        });
+
+        binding.ibContainerBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_doctorMenuFragment_to_attendanceMenuFragment);
+            }
+        });
+
+        binding.ivPpDoctor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_doctorMenuFragment_to_profileFragment);
             }
         });
 

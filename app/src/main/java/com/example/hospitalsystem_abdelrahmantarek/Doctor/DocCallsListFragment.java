@@ -14,24 +14,14 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.DocCallsListAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallData;
-import com.example.hospitalsystem_abdelrahmantarek.Models.Calls.CallsResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.ErrorResponse;
-import com.example.hospitalsystem_abdelrahmantarek.Models.RetrofitClient;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.ViewModels.CallsListViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Calls.CallsListViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentDocCallsListBinding;
-import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class DocCallsListFragment extends Fragment {

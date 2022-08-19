@@ -6,10 +6,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerCreateTaskFragmentDirections;
+import com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerTasksFragmentDirections;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TaskData;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.Tasks.TasksListFragmentDirections;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.ItemTaskBinding;
 
 import java.util.ArrayList;
@@ -17,9 +22,11 @@ import java.util.ArrayList;
 public class TasksAdaptor extends RecyclerView.Adapter<TasksAdaptor.TasksHolder> {
 
     private ArrayList<TaskData> tasksList;
+    private String empType;
 
-    public TasksAdaptor(ArrayList<TaskData> tasksList) {
+    public TasksAdaptor(ArrayList<TaskData> tasksList, String empType) {
         this.tasksList = tasksList;
+        this.empType = empType;
     }
 
     @NonNull
@@ -40,6 +47,22 @@ public class TasksAdaptor extends RecyclerView.Adapter<TasksAdaptor.TasksHolder>
         else
             holder.binding.ivItemTStatus.setImageResource(R.drawable.iv_status_finished);
 
+        holder.binding.ITTaskCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(view);
+                if(empType.toLowerCase().equals("manger")){
+                    ManagerTasksFragmentDirections.ActionManagerTasksFragmentToTaskDetailsFragment action =
+                            ManagerTasksFragmentDirections.actionManagerTasksFragmentToTaskDetailsFragment(data.getId());
+                    navController.navigate(action);
+                }
+                else {
+                    TasksListFragmentDirections.ActionTasksListFragmentToTaskDetailsFragment action =
+                            TasksListFragmentDirections.actionTasksListFragmentToTaskDetailsFragment(data.getId());
+                    navController.navigate(action);
+                }
+            }
+        });
     }
 
     @Override

@@ -1,11 +1,8 @@
 package com.example.hospitalsystem_abdelrahmantarek.Adaptors;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.Filterable;
 
@@ -13,16 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAData;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.databinding.ItemCallsCardBinding;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.ItemDoctorCardBinding;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Locale;
 
 public class DocListAdaptor extends RecyclerView.Adapter<DocListAdaptor.Holder> implements Filterable {
 

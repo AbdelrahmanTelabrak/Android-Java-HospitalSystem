@@ -37,6 +37,8 @@ public class DateBottomSheetFragment extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         navController = NavHostFragment.findNavController(this);
 
+
+
         binding.cvTasks.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {

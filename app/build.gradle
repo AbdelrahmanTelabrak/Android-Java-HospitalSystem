@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.hospitalsystem_abdelrahmantarek"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
@@ -36,7 +36,12 @@ android {
 
 dependencies {
     def lifecycle_version = "2.6.0-alpha01"
+    def libVersion = "2.1.16"
 
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation "com.github.Drjacky:ImagePicker:$libVersion"
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -44,7 +49,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

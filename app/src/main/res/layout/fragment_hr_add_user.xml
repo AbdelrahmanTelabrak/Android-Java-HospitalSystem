@@ -128,23 +128,29 @@
                         android:layout_height="wrap_content"
                         app:startIconDrawable="@drawable/ic_gender"
                         app:startIconTint="@color/main_green"
+                        app:endIconDrawable="@drawable/ic_arrow_down"
+                        app:endIconMode="custom"
+                        app:endIconTint="@color/grey"
                         app:layout_constraintTop_toBottomOf="@+id/etl_last_name_NU_hr"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="@dimen/_15sdp"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         app:boxCornerRadiusTopStart="@dimen/_7sdp"
                         app:boxCornerRadiusTopEnd="@dimen/_7sdp"
                         app:boxCornerRadiusBottomStart="@dimen/_7sdp"
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <AutoCompleteTextView
                             android:id="@+id/eti_hr_NU_gender"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Gender"
+                            android:inputType="none"
+                            android:clickable="true"
+                            android:focusable="false"
                             android:fontFamily="@font/poppins"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -155,22 +161,28 @@
                         android:layout_height="wrap_content"
                         app:startIconDrawable="@drawable/ic_specialist"
                         app:startIconTint="@color/main_green"
+                        app:endIconDrawable="@drawable/ic_arrow_down"
+                        app:endIconMode="custom"
+                        app:endIconTint="@color/grey"
                         app:layout_constraintTop_toBottomOf="@+id/etl_gender_NU_hr"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="@dimen/_15sdp"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         app:boxCornerRadiusTopStart="@dimen/_7sdp"
                         app:boxCornerRadiusTopEnd="@dimen/_7sdp"
                         app:boxCornerRadiusBottomStart="@dimen/_7sdp"
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <AutoCompleteTextView
                             android:id="@+id/eti_hr_NU_specialist"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:clickable="true"
+                            android:focusable="false"
                             android:hint="Specialist"
                             android:fontFamily="@font/poppins"/>
 
@@ -182,6 +194,9 @@
                         android:layout_height="wrap_content"
                         app:startIconDrawable="@drawable/ic_profile"
                         app:startIconTint="@color/main_green"
+                        app:endIconDrawable="@drawable/ic_arrow_down"
+                        app:endIconMode="custom"
+                        app:endIconTint="@color/grey"
                         app:layout_constraintTop_toBottomOf="@+id/etl_specialist_NU_hr"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -196,7 +211,8 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/eti_hr_NU_birthday"
-                            android:editable="false"
+                            android:clickable="true"
+                            android:focusable="false"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Date of Birth"
@@ -210,22 +226,28 @@
                         android:layout_height="wrap_content"
                         app:startIconDrawable="@drawable/ic_status"
                         app:startIconTint="@color/main_green"
+                        app:endIconDrawable="@drawable/ic_arrow_down"
+                        app:endIconMode="custom"
+                        app:endIconTint="@color/grey"
                         app:layout_constraintTop_toBottomOf="@+id/etl_birthday_NU_hr"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="@dimen/_15sdp"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         app:boxCornerRadiusTopStart="@dimen/_7sdp"
                         app:boxCornerRadiusTopEnd="@dimen/_7sdp"
                         app:boxCornerRadiusBottomStart="@dimen/_7sdp"
                         app:boxCornerRadiusBottomEnd="@dimen/_7sdp">
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <AutoCompleteTextView
                             android:id="@+id/eti_hr_NU_status"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:inputType="none"
                             android:hint="Status"
                             android:fontFamily="@font/poppins"/>
 

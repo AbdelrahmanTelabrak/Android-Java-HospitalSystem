@@ -39,48 +39,48 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/nurseCD_tvCaseDet" />
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/materialButtonToggleGroup"
-                android:layout_width="0dp"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_30sdp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/nurseCD_tvCaseDet"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nurseCD_tvCaseDet">
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:padding="@dimen/_1sdp"
+                android:text="Case"
+                android:fontFamily="@font/poppins"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="@+id/imageButton"
+                app:layout_constraintTop_toBottomOf="@+id/nurseCD_tvCaseDet" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_weight="1"
-                    android:padding="@dimen/_1sdp"
-                    android:text="Case"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/_10ssp" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:insetLeft="@dimen/_10sdp"
-                    android:padding="1dp"
-                    android:text="Medical measurement"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/_10ssp" />
-
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_nurseMMeasurement"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:text="Medical measurement"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/materialButton3"
+                app:layout_constraintStart_toEndOf="@+id/materialButton3"
+                app:layout_constraintTop_toTopOf="@+id/materialButton3" />
 
             <ImageButton
+                android:id="@+id/ib_NCD_addMeasurement"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:background="@drawable/ic_speed_indicator"
-                app:layout_constraintBottom_toBottomOf="@+id/materialButtonToggleGroup"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_nurseMMeasurement"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/materialButtonToggleGroup" />
+                app:layout_constraintTop_toTopOf="@+id/btn_nurseMMeasurement" />
 
             <TextView
                 android:id="@+id/tv_name"
@@ -93,7 +93,7 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialButtonToggleGroup" />
+                app:layout_constraintTop_toBottomOf="@+id/materialButton3" />
 
             <TextView
                 android:id="@+id/nurseCD_tvName"

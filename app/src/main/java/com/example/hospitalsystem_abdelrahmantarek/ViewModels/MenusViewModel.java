@@ -3,7 +3,7 @@ package com.example.hospitalsystem_abdelrahmantarek.ViewModels;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.EmployeeModel;
 import com.google.gson.Gson;
 
 public class MenusViewModel {

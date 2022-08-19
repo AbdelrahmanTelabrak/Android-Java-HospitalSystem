@@ -35,14 +35,44 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/logo_hospital_system"/>
 
+
             <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_splash_hospital_system"
+            app:layout_constraintStart_toStartOf="@+id/logo_splash_hospital_system"
+            android:background="@drawable/shape_gradient_bottom_right"/>
+
+            <ProgressBar
+                android:id="@+id/linearProgressIndicator"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progress="0"
+                android:max="100"
+                android:progressTint="@color/main_green"
+                android:progressBackgroundTint="@color/main_green"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_55sdp"
+                android:layout_marginEnd="@dimen/_55sdp"
+                android:layout_marginBottom="@dimen/_80sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo_splash_hospital_system"
-                app:layout_constraintStart_toStartOf="@+id/logo_splash_hospital_system"
-                android:background="@drawable/shape_gradient_bottom_right"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo_splash_hospital_system"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Loading ..."
+                android:textColor="@color/main_green"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearProgressIndicator" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

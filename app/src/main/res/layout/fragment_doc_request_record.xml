@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Doctor.DocRequestRecordFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+            android:id="@+id/tv_medical_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Medical Record"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/ic_cancel"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_medical_record"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_medical_record" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_record_choices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_medical_record"
+                tools:layout_height="@dimen/_120sdp"
+                tools:listitem="@layout/item_choices" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bnt_DRR_add_choice"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:drawableEnd="@drawable/ic_add"
+                android:drawableTint="@color/lightGrey"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:text="Add"
+                android:textColor="@color/lightGrey"
+                app:cornerRadius="@dimen/_7sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_record_choices" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_DRR_select_anl"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                app:endIconDrawable="@drawable/ic_right_arrow"
+                app:endIconMode="custom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bnt_DRR_add_choice">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_DRR_select_anl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Select Analysis"
+                    android:textSize="@dimen/_13ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etl_DRR_note"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                app:boxBackgroundColor="#33707070"
+                app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+                app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                app:boxStrokeColor="#33707070"
+                app:boxStrokeWidth="0dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/etl_DRR_select_anl"
+                tools:layout_editor_absoluteX="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eti_DRR_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"
+                    android:gravity="top"
+                    android:hint="Add Note"
+                    android:textAlignment="gravity" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_DRR_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/shape_button"
+                android:text="Send"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

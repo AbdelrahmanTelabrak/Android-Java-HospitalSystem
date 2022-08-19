@@ -39,49 +39,49 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/analysisCD_tvCaseDet" />
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/materialButtonToggleGroup"
-                android:layout_width="0dp"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton4"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_30sdp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/analysisCD_tvCaseDet"
+                android:layout_weight="1"
+                android:padding="@dimen/_1sdp"
+                android:text="Case"
+                android:fontFamily="@font/poppins"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/analysisCD_tvCaseDet">
+                app:layout_constraintTop_toBottomOf="@+id/analysisCD_tvCaseDet" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_weight="1"
-                    android:padding="@dimen/_1sdp"
-                    android:text="Case"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/_10ssp" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:insetLeft="@dimen/_10sdp"
-                    android:padding="1dp"
-                    android:text="Medical measurement"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/_10ssp" />
-
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ACD_record"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/poppins"
+                android:insetLeft="@dimen/_5sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:text="Medical Record"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/materialButton4"
+                app:layout_constraintStart_toEndOf="@+id/materialButton4"
+                app:layout_constraintTop_toTopOf="@+id/materialButton4" />
 
             <ImageButton
+                android:id="@+id/ib_ACD_add_record"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:background="@drawable/ic_reports"
-                app:layout_constraintBottom_toBottomOf="@+id/materialButtonToggleGroup"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_ACD_record"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/materialButtonToggleGroup"
-                android:backgroundTint="@color/black" />
+                app:layout_constraintTop_toTopOf="@+id/btn_ACD_record" />
 
             <TextView
                 android:id="@+id/tv_name"
@@ -94,14 +94,14 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialButtonToggleGroup" />
+                app:layout_constraintTop_toBottomOf="@+id/materialButton4" />
 
             <TextView
                 android:id="@+id/analysisCD_tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:text="Ebrahem Khaled"
+                tools:text="Ebrahem Khaled"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:text="24 Years"
+                tools:text="24 Years"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
@@ -153,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:text="254110241423"
+                tools:text="254110241423"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
@@ -179,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:text="24 . 04 . 2021"
+                tools:text="24 . 04 . 2021"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
@@ -205,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:text="Process   "
+                tools:text="Process   "
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
@@ -234,7 +234,7 @@
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="Details note : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
+                tools:text="Details note : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"

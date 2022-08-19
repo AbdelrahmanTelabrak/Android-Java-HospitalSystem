@@ -26,4 +26,12 @@ public class DocNameId  implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "DocNameId{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

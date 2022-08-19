@@ -27,6 +27,9 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <CalendarView
+                app:fontFamily="@font/poppins"
+                android:theme="@style/CalenderViewCustom"
+                android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
                 android:id="@+id/cv_tasks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

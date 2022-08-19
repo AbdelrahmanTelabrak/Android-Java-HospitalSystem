@@ -9,11 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.DNAData;
 import com.example.hospitalsystem_abdelrahmantarek.R;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.ItemEmployeeCardBinding;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collection;

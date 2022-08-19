@@ -95,12 +95,14 @@
                 app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
                 app:startIconDrawable="@drawable/ic_email"
                 app:startIconTint="@color/main_green"
+                android:drawableStart="@drawable/ic_cursor"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/eti_login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_cursor"
                     android:hint="Email"/>
 
             </com.google.android.material.textfield.TextInputLayout>

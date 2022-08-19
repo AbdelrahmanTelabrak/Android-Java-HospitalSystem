@@ -1,7 +1,5 @@
 package com.example.hospitalsystem_abdelrahmantarek.Manager;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,11 +18,11 @@ import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.DocCasesListAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Cases.CaseCardData;
-import com.example.hospitalsystem_abdelrahmantarek.Models.EmployeeModel;
+import com.example.hospitalsystem_abdelrahmantarek.Models.Employees.EmployeeModel;
 import com.example.hospitalsystem_abdelrahmantarek.R;
-import com.example.hospitalsystem_abdelrahmantarek.ViewModels.CaseDetailsViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Cases.CaseDetailsViewModel;
+import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Cases.CasesListViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentManagerCasesBinding;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collections;
