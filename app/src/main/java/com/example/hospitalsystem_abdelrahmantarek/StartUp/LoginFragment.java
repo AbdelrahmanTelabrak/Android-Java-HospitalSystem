@@ -1,5 +1,6 @@
 package com.example.hospitalsystem_abdelrahmantarek.StartUp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class LoginFragment extends Fragment {
     FragmentLoginBinding binding;
     NavController navController;
     LoginViewModel loginViewModel;
+    private ProgressDialog pd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +48,10 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        pd = new ProgressDialog(requireContext());
+        pd.setMessage("Loading");
+        pd.setCancelable(false);
 
         binding.etiLoginEmail.addTextChangedListener(new TextWatcher() {
             @Override
@@ -100,6 +106,7 @@ public class LoginFragment extends Fragment {
                     LoginRequest loginRequest = new LoginRequest(binding.etiLoginEmail.getText().toString(),
                             binding.etiLoginPassword.getText().toString(), "sdfsfsdfsdfsdfsfs");
                     loginViewModel.login(loginRequest);
+                    pd.show();
                 }
                 else
                     return;
@@ -121,12 +128,14 @@ public class LoginFragment extends Fragment {
         loginViewModel.getLoginFailed().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
+                pd.dismiss();
                 Toast.makeText(binding.getRoot().getContext(), s, Toast.LENGTH_SHORT).show();
             }
         });
         loginViewModel.getEmpType().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
+                pd.dismiss();
                 handleEmployeeType(s);
             }
         });

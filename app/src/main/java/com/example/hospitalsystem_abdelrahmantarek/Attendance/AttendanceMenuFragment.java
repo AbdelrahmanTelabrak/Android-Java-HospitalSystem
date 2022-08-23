@@ -39,6 +39,7 @@ public class AttendanceMenuFragment extends Fragment {
         menusViewModel = new MenusViewModel(requireContext());
         binding.tvAttendanceEmpName.setText(menusViewModel.getEmployeeModel().getFullName());
         binding.tvAttendanceSpecialist.setText("Specialist , "+ menusViewModel.getEmployeeModel().getType());
+        handlePp(menusViewModel.getEmployeeModel().getType());
 
         binding.btnAttendanceAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,5 +58,26 @@ public class AttendanceMenuFragment extends Fragment {
                 navController.navigate(action);
             }
         });
+    }
+
+    private void handlePp(String empType){
+        if(empType.trim().equalsIgnoreCase("doctor")){
+            binding.ivPpEmp.setImageResource(R.drawable.iv_dpp_doctor);
+        }
+        else if(empType.trim().equalsIgnoreCase("nurse")){
+            binding.ivPpEmp.setImageResource(R.drawable.iv_dpp_nurse);
+        }
+        else if(empType.trim().equalsIgnoreCase("receptionist")){
+            binding.ivPpEmp.setImageResource(R.drawable.iv_dpp_receptionist);
+        }
+        else if(empType.trim().equalsIgnoreCase("analysis")){
+            binding.ivPpEmp.setImageResource(R.drawable.iv_dpp_analysis);
+        }
+        else if(empType.trim().equalsIgnoreCase("hr")){
+            binding.ivPpEmp.setImageResource(R.drawable.iv_dpp_hr);
+        }
+        else {
+            binding.ivPpEmp.setImageResource(R.drawable.iv_dpp_manager);
+        }
     }
 }

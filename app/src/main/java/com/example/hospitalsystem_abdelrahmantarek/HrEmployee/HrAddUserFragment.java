@@ -62,7 +62,7 @@ public class HrAddUserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        navController.popBackStack(R.id.employeeListFragment, true);
+        //navController.popBackStack(R.id.employeeListFragment, true);
         registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
 
         String[] listGender = {"male", "female"};

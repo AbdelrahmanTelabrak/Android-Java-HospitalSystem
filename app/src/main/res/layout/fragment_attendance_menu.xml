@@ -23,7 +23,7 @@
                 android:layout_height="@dimen/_37sdp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:background="@drawable/iv_dpp_analysis"
+                android:src="@drawable/iv_dpp_analysis"
                 app:layout_constraintEnd_toStartOf="@+id/linearLayout_analysis_menu"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

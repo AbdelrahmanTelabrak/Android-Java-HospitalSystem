@@ -215,8 +215,7 @@
         tools:layout="@layout/fragment_hr_add_user">
         <action
             android:id="@+id/action_hrAddUserFragment_to_employeeListFragment"
-            app:destination="@id/employeeListFragment"
-            app:popUpTo="@id/mainMenuHrFragment" />
+            app:destination="@id/employeeListFragment" />
     </fragment>
     <fragment
         android:id="@+id/employeeListFragment"
