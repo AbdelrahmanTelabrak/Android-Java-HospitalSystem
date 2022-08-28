@@ -147,6 +147,12 @@ public interface ApisFunctions {
                                     @Header("Authorization") String token);
 
     @PUT("tasks/{taskId}")
-    Call<SimpleResponse> executeTask(@Path("taskId") int taskId,
+    Call<SimpleResponse> executeTaskManager(@Path("taskId") int taskId,
                                     @Header("Authorization") String token);
+
+    @FormUrlEncoded
+    @PUT("tasks/{taskId}")
+    Call<SimpleResponse> executeTask(@Path("taskId") int taskId,
+                                            @Field("note") String note,
+                                            @Header("Authorization") String token);
 }

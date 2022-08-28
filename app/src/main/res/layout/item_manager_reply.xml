@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -19,7 +20,7 @@
                 android:layout_width="@dimen/_37sdp"
                 android:layout_height="@dimen/_37sdp"
                 android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:src="@drawable/iv_dpp_manager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins"
-                    android:text="Specialist , Manager"
+                    tools:text="Specialist , Manager"
                     android:textColor="@color/main_green"
                     android:textSize="@dimen/_10ssp" />
 

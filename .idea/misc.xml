@@ -7,6 +7,7 @@
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/background_edittext.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/checkbox_selector.xml" value="0.1435" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/divider.xml" value="0.1245" />
+        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/horizontal_dashed_line.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/ic_active_request_measurment.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/ic_active_request_record.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/ic_add.xml" value="0.127" />
@@ -24,10 +25,12 @@
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/shape_container_orange.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/shape_container_purple.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/shape_container_white.xml" value="0.1425" />
+        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/shape_dashed_border.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/shape_gradient_bottom_right.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/shape_gradient_upper_left.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/shape_grey_background.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/shape_rectangle_orange.xml" value="0.1425" />
+        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/drawable/vertical_dashed_line.xml" value="0.1425" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/activity_hr_employee.xml" value="0.2212962962962963" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/activity_splash_screen.xml" value="0.2212962962962963" />
@@ -73,6 +76,7 @@
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_date_bs.xml" value="0.20599409033347404" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_menu.xml" value="0.2212962962962963" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_select_emp.xml" value="0.20599409033347404" />
+        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_task_details.xml" value="0.20599409033347404" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_manager_tasks.xml" value="0.2228310502283105" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_nurse_add_mes.xml" value="0.264" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_nurse_calls_list.xml" value="0.2" />
@@ -91,7 +95,7 @@
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_request_bottom_sheet.xml" value="0.264" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_select_doctor.xml" value="0.197008547008547" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_splash_screen.xml" value="0.2" />
-        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_task_details.xml" value="0.264" />
+        <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_task_details.xml" value="0.2" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_tasks_list.xml" value="0.264" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_to_do_bottom_sheet.xml" value="0.2" />
         <entry key="..\:/Users/AbdelRahman/AndroidStudioProjects/HospitalSystemAbdelrahmanTarek/app/src/main/res/layout/fragment_touch_id.xml" value="0.20599409033347404" />

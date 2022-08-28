@@ -1,4 +1,4 @@
-package com.example.hospitalsystem_abdelrahmantarek.Tasks;
+package com.example.hospitalsystem_abdelrahmantarek.Manager;
 
 import android.os.Bundle;
 
@@ -17,19 +17,23 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.hospitalsystem_abdelrahmantarek.Adaptors.CheckToDoAdapter;
+import com.example.hospitalsystem_abdelrahmantarek.Adaptors.EmployeeReplyAdaptor;
 import com.example.hospitalsystem_abdelrahmantarek.Models.Tasks.TaskDetails;
 import com.example.hospitalsystem_abdelrahmantarek.R;
+import com.example.hospitalsystem_abdelrahmantarek.Tasks.TaskDetailsFragmentArgs;
 import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Tasks.ExecuteTaskViewModel;
 import com.example.hospitalsystem_abdelrahmantarek.ViewModels.Tasks.TaskDetailsViewModel;
-import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentTaskDetailsBinding;
+import com.example.hospitalsystem_abdelrahmantarek.databinding.FragmentManagerTaskDetailsBinding;
 
+import java.util.ArrayList;
 
-public class TaskDetailsFragment extends Fragment {
-    FragmentTaskDetailsBinding binding;
+public class ManagerTaskDetailsFragment extends Fragment {
+    FragmentManagerTaskDetailsBinding binding;
     NavController navController;
     TaskDetailsViewModel taskDetailsViewModel;
     ExecuteTaskViewModel executeTaskViewModel;
     CheckToDoAdapter adapter;
+    EmployeeReplyAdaptor employeeReplyAdaptor;
     int taskId;
     int todoCount;
     String status, empType;
@@ -38,7 +42,7 @@ public class TaskDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_task_details, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_manager_task_details, container, false);
         return binding.getRoot();
     }
 
@@ -50,7 +54,7 @@ public class TaskDetailsFragment extends Fragment {
         taskDetailsViewModel = new ViewModelProvider(this).get(TaskDetailsViewModel.class);
         executeTaskViewModel = new ViewModelProvider(this).get(ExecuteTaskViewModel.class);
 
-        taskId = TaskDetailsFragmentArgs.fromBundle(getArguments()).getTaskId();
+        taskId = ManagerTaskDetailsFragmentArgs.fromBundle(getArguments()).getTaskId();
 
         taskDetailsViewModel.showTask(requireContext(), taskId);
         taskDetailsObserver();
@@ -59,12 +63,7 @@ public class TaskDetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (status.equals("pending")){
-                    if (adapter.checkedCount() == todoCount){
-                        String note = binding.etiTDEmpNote.getText().toString();
-                        executeTaskViewModel.executeTask(requireContext(), taskId, note);
-                    }
-                    else
-                        Toast.makeText(requireContext(), "Finish all of your Todos", Toast.LENGTH_SHORT).show();
+                    executeTaskViewModel.executeTaskManager(requireContext(), taskId);
                 }
                 else
                     Toast.makeText(requireContext(), "This task is already executed", Toast.LENGTH_SHORT).show();
@@ -102,6 +101,14 @@ public class TaskDetailsFragment extends Fragment {
                 binding.tvTDTaskName.setText(taskDetails.getTaskName());
                 adapter = new CheckToDoAdapter(taskDetails.getToDo(), status, empType);
                 binding.rvTDCheckTodo.setAdapter(adapter);
+                if(taskDetails.getNote() != null){
+                    ArrayList<TaskDetails> reply = new ArrayList<>();
+                    reply.add(taskDetails);
+                    employeeReplyAdaptor = new EmployeeReplyAdaptor(reply);
+                    binding.rvMTDEmpReply.setAdapter(employeeReplyAdaptor);
+                }
+                else
+                    binding.imageView17.setImageResource(R.color.white);
             }
         });
 

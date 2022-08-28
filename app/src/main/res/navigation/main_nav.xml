@@ -449,8 +449,8 @@
             app:nullable="true"
             android:defaultValue="null" />
         <action
-            android:id="@+id/action_managerTasksFragment_to_taskDetailsFragment"
-            app:destination="@id/taskDetailsFragment" />
+            android:id="@+id/action_managerTasksFragment_to_managerTaskDetailsFragment"
+            app:destination="@id/managerTaskDetailsFragment" />
     </fragment>
     <dialog
         android:id="@+id/toDoBottomSheetFragment"
@@ -856,9 +856,15 @@
         <action
             android:id="@+id/action_taskDetailsFragment_to_tasksListFragment"
             app:destination="@id/tasksListFragment" />
-        <action
-            android:id="@+id/action_taskDetailsFragment_to_managerTasksFragment"
-            app:destination="@id/managerTasksFragment" />
+        <argument
+            android:name="taskId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/managerTaskDetailsFragment"
+        android:name="com.example.hospitalsystem_abdelrahmantarek.Manager.ManagerTaskDetailsFragment"
+        android:label="ManagerTaskDetailsFragment"
+        tools:layout="@layout/fragment_manager_task_details" >
         <argument
             android:name="taskId"
             app:argType="integer" />

@@ -32,6 +32,7 @@ public class ManagerReplyAdaptor extends RecyclerView.Adapter<ManagerReplyAdapto
         ReportDetailsData reportDetailsData = reportReplys.get(position);
         String managerFullName = reportDetailsData.getManger().getFirstName()+" "+reportDetailsData.getManger().getLastName();
         holder.binding.tvIMRMangerName.setText(managerFullName);
+        holder.binding.tvIMRSpecialist.setText("Specialist, Manager");
         holder.binding.tvIMRReplyDate.setText(reportDetailsData.getManger().getUpdatedAt());
         holder.binding.tvIMRReplyDescription.setText(reportDetailsData.getAnswer());
     }

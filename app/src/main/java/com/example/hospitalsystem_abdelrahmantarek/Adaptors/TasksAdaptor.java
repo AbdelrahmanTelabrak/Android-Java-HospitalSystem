@@ -52,8 +52,8 @@ public class TasksAdaptor extends RecyclerView.Adapter<TasksAdaptor.TasksHolder>
             public void onClick(View view) {
                 NavController navController = Navigation.findNavController(view);
                 if(empType.toLowerCase().equals("manger")){
-                    ManagerTasksFragmentDirections.ActionManagerTasksFragmentToTaskDetailsFragment action =
-                            ManagerTasksFragmentDirections.actionManagerTasksFragmentToTaskDetailsFragment(data.getId());
+                    ManagerTasksFragmentDirections.ActionManagerTasksFragmentToManagerTaskDetailsFragment action =
+                            ManagerTasksFragmentDirections.actionManagerTasksFragmentToManagerTaskDetailsFragment(data.getId());
                     navController.navigate(action);
                 }
                 else {

@@ -24,11 +24,39 @@ public class ExecuteTaskViewModel extends ViewModel {
     private MutableLiveData<String > errorMLiveData = new MutableLiveData<>();
     private MutableLiveData<String > successMLiveData = new MutableLiveData<>();
 
-    public void executeTask(Context context, int taskId){
+    public void executeTask(Context context, int taskId, String note){
         SharedPreferences preferences = context.getSharedPreferences("empData", Context.MODE_PRIVATE);
         employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
 
-        RetrofitClient.getClient().executeTask(taskId, employeeModel.getAccessToken()).enqueue(new Callback<SimpleResponse>() {
+        RetrofitClient.getClient().executeTask(taskId, note, employeeModel.getAccessToken()).enqueue(new Callback<SimpleResponse>() {
+            @Override
+            public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
+                if(response.isSuccessful()){
+                    if (response.body().isSuccess()){
+                        successMLiveData.postValue("Success");
+                    }
+                    else {
+                        String errorMessage = response.body().getMessage();
+                        errorMLiveData.postValue(errorMessage);
+                    }
+                }
+                else {
+                    handleFailedResponse(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SimpleResponse> call, Throwable t) {
+                errorMLiveData.postValue(t.getLocalizedMessage());
+            }
+        });
+    }
+
+    public void executeTaskManager(Context context, int taskId){
+        SharedPreferences preferences = context.getSharedPreferences("empData", Context.MODE_PRIVATE);
+        employeeModel = new Gson().fromJson(preferences.getString("employee", "null"), EmployeeModel.class);
+
+        RetrofitClient.getClient().executeTaskManager(taskId, employeeModel.getAccessToken()).enqueue(new Callback<SimpleResponse>() {
             @Override
             public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
                 if(response.isSuccessful()){

@@ -155,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_160sdp"
                 android:layout_marginBottom="@dimen/_15sdp"
-                android:background="@drawable/shape_border"
+                android:background="@drawable/shape_dashed_border"
                 app:layout_constraintBottom_toTopOf="@+id/btn_MCT_createTask"
                 app:layout_constraintTop_toBottomOf="@id/rv_MCT_todos"
                 android:layout_marginStart="@dimen/_15sdp"

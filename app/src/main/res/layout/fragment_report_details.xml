@@ -175,7 +175,7 @@
                         android:layout_width="@dimen/_2sdp"
                         android:layout_height="0dp"
                         android:layout_marginStart="@dimen/_16sdp"
-                        android:background="#D5D5D5"
+                        android:background="@color/lightGrey"
                         app:layout_constraintBottom_toBottomOf="@+id/rv_RD_replies"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/rv_RD_replies" />

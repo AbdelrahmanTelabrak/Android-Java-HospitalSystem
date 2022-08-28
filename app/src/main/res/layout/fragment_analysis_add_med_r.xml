@@ -117,7 +117,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
-                android:background="@drawable/shape_border"
+                android:background="@drawable/shape_dashed_border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4">

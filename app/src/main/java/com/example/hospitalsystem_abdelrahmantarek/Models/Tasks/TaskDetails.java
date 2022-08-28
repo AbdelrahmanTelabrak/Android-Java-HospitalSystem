@@ -19,7 +19,7 @@ public class TaskDetails {
     private String description;
     @SerializedName("note")
     @Expose
-    private Object note;
+    private String note;
     @SerializedName("to_do")
     @Expose
     private ArrayList<ToDo> toDo = null;
@@ -57,11 +57,11 @@ public class TaskDetails {
         this.description = description;
     }
 
-    public Object getNote() {
+    public String getNote() {
         return note;
     }
 
-    public void setNote(Object note) {
+    public void setNote(String note) {
         this.note = note;
     }
 

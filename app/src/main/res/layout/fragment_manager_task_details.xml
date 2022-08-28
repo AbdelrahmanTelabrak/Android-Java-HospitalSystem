@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Tasks.TaskDetailsFragment">
+        tools:context=".Manager.ManagerTaskDetailsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -187,36 +187,34 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etl_TD_emp_note"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#DADADA"
-                    app:boxStrokeWidth="0dp"
-                    app:hintTextColor="@color/grey"
-                    android:background="@drawable/shape_grey_background"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
-                    app:boxCornerRadiusBottomStart="@dimen/_7sdp"
-                    app:boxCornerRadiusTopEnd="@dimen/_7sdp"
-                    app:boxCornerRadiusTopStart="@dimen/_7sdp"
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="@dimen/_85sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:src="@drawable/iv_manager_reply"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView19"
+                    app:layout_constraintStart_toStartOf="@+id/imageView19" />
 
+                <ImageView
+                    android:id="@+id/imageView19"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="0dp"
+                    android:background="@color/lightGrey"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_MTD_emp_reply"
+                    app:layout_constraintStart_toStartOf="@+id/btn_TD_execution"
+                    app:layout_constraintTop_toTopOf="@+id/rv_MTD_emp_reply" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_MTD_emp_reply"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:layout_height="@dimen/_110sdp"
                     app:layout_constraintBottom_toTopOf="@+id/btn_TD_execution"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/eti_TD_emp_note"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:hint="Add Note" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
+                    app:layout_constraintStart_toEndOf="@+id/imageView19"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_manager_reply"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 <Button
                     android:id="@+id/btn_TD_execution"
@@ -235,6 +233,7 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </FrameLayout>
 </layout>
