@@ -5,7 +5,7 @@ Key Features:
 
 -Patient Management: The app provides functionality to manage patient information, including their personal details, medical history, and assigned doctors. It enables healthcare professionals to access patient records quickly and make informed decisions.
 
--Appointment Scheduling: Users can schedule and manage appointments for patients, ensuring a streamlined process and reducing waiting times. The app offers a user-friendly interface for scheduling, rescheduling, and canceling appointments, as well as sending reminders to patients.
+-Appointment Scheduling: Users can schedule and manage appointments for patients, ensuring a streamlined process and reducing waiting times. The app offers a user-friendly interface for scheduling, and canceling appointments.
 
 -Medical Records Management: The app facilitates the secure storage and organization of medical records. Users can add, update, and access patient medical records, including diagnoses, prescriptions, lab results, and imaging reports.
 
