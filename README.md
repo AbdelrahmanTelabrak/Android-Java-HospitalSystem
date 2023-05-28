@@ -14,9 +14,13 @@ Key Features:
 Technologies Used:
 
 -Android Development with Java
+
 -RESTful API integration for data communication
+
 -MVVM architecture pattern for separation of concerns
+
 -Material Design for modern and visually appealing UI
+
 -SharedPreferences for storing important information locally
 
 UI Design link: https://xd.adobe.com/view/42ebac87-beb8-4aec-9765-656998308372-17b8/flow/
